@@ -9,8 +9,6 @@ package io.labber.kbadm.impl.pgvector;
 import org.springframework.ai.embedding.EmbeddingModel;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.ai.vectorstore.pgvector.PgVectorStore;
-import org.springframework.ai.vectorstore.pgvector.PgVectorStore.PgDistanceType;
-import org.springframework.ai.vectorstore.pgvector.PgVectorStore.PgIndexType;
 import org.springframework.jdbc.core.JdbcTemplate;
 
 import io.labber.kbadm.driver.Driver;
@@ -53,19 +51,19 @@ public class PgVectorStoreDriverImpl extends Driver {
 			jdbcTemplate, 
 			embeddingModel
 		).indexType(
-			PgIndexType.HNSW
+			this.config.getIndexType() // PgIndexType.HNSW
 		).distanceType(
-			PgDistanceType.COSINE_DISTANCE
+			this.config.getDistanceType() // PgDistanceType.COSINE_DISTANCE
 		).dimensions(
-			1024
+			this.config.getDimensions() // 1024
 		).schemaName(
-			PgVectorStore.DEFAULT_SCHEMA_NAME
+			this.config.getSchemaName() // PgVectorStore.DEFAULT_SCHEMA_NAME
 		).vectorTableName(
-			PgVectorStore.DEFAULT_TABLE_NAME // "vector_store"
+			this.config.getVectorTableName() // PgVectorStore.DEFAULT_TABLE_NAME // "vector_store"
 		).initializeSchema(
-			true
+			this.config.isInitializeSchema() // true
 		).removeExistingVectorStoreTable(
-			false
+			this.config.isRemoveExistingVectorStoreTable() // false
 		).build(); 
 	}
 
