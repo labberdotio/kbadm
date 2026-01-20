@@ -143,6 +143,42 @@ public class PgVectorStoreDriverImpl extends Driver {
 
 	/**
 	 * 
+	 * @param dropTableSQL
+	 * @return
+	 * @throws KBException
+	 */
+	protected boolean dropTable(String dropTableSQL) throws KBException {
+
+		/*
+		 * 
+		 */
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		try {
+			conn = this.jdbcTemplate.getDataSource().getConnection();
+			stmt = conn.createStatement();
+			stmt.executeUpdate(dropTableSQL);
+			return true;
+		} catch( SQLException e ) {
+			throw new KBException(e);
+			// return false;
+		} finally {
+			if( rs != null ) {
+				try { rs.close(); } catch (SQLException e) { /* log error */ }
+			}
+			if( stmt != null ) {
+				try { stmt.close(); } catch (SQLException e) { /* log error */ }
+			}
+			if( conn != null ) {
+				try { conn.close(); } catch (SQLException e) { /* log error */ }
+			}
+		}
+
+	}
+
+	/**
+	 * 
 	 * @param jdbcTemplate
 	 * @param embeddingModel
 	 * @return
