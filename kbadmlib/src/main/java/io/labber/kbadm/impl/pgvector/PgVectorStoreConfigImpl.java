@@ -37,6 +37,7 @@ public class PgVectorStoreConfigImpl extends StoreConfig {
 	 * @param properties
 	 */
 	public PgVectorStoreConfigImpl(Map<String, Object> properties) {
+		super(properties);
 		this.indexType = this.readIndexType(properties, PgIndexType.HNSW);
 		this.distanceType = this.readDistanceType(properties, PgDistanceType.COSINE_DISTANCE);
 		this.dimensions = this.readInteger("dimensions", properties, 1024);
@@ -51,6 +52,7 @@ public class PgVectorStoreConfigImpl extends StoreConfig {
 	 * @param properties
 	 */
 	public PgVectorStoreConfigImpl(Properties properties) {
+		super(properties);
 		this.indexType = this.readIndexType(this.readProperties(properties), PgIndexType.HNSW);
 		this.distanceType = this.readDistanceType(this.readProperties(properties), PgDistanceType.COSINE_DISTANCE);
 		this.dimensions = this.readInteger("dimensions", this.readProperties(properties), 1024);
@@ -64,6 +66,7 @@ public class PgVectorStoreConfigImpl extends StoreConfig {
 	 * 
 	 */
 	public PgVectorStoreConfigImpl() {
+		super();
 		this.indexType = PgIndexType.HNSW;
 		this.distanceType = PgDistanceType.COSINE_DISTANCE;
 		this.dimensions = 1024;
