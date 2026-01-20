@@ -6,11 +6,17 @@
 
 package io.labber.kbadm.impl.pgvector;
 
+import java.sql.Connection;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+
 import org.springframework.ai.embedding.EmbeddingModel;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.ai.vectorstore.pgvector.PgVectorStore;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import io.labber.kbadm.KBException;
 import io.labber.kbadm.driver.Driver;
 
 /**
@@ -23,6 +29,8 @@ public class PgVectorStoreDriverImpl extends Driver {
 	private PgVectorStoreImpl store;
 	private PgVectorStoreConfigImpl config;
 	private PgVectorStoreMetadataImpl metadata;
+
+	private JdbcTemplate jdbcTemplate;
 
 	/**
 	 * 
@@ -95,6 +103,42 @@ public class PgVectorStoreDriverImpl extends Driver {
 		return this.getTableName(
 			this.config.getVectorTableName() // PgVectorStore.DEFAULT_TABLE_NAME // "vector_store"
 		);
+	}
+
+	/**
+	 * 
+	 * @param createTableSQL
+	 * @return
+	 * @throws KBException
+	 */
+	protected boolean createTable(String createTableSQL) throws KBException {
+
+		/*
+		 * 
+		 */
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
+		try {
+			conn = this.jdbcTemplate.getDataSource().getConnection();
+			stmt = conn.createStatement();
+			stmt.executeUpdate(createTableSQL);
+			return true;
+		} catch( SQLException e ) {
+			throw new KBException(e);
+			// return false;
+		} finally {
+			if( rs != null ) {
+				try { rs.close(); } catch (SQLException e) { /* log error */ }
+			}
+			if( stmt != null ) {
+				try { stmt.close(); } catch (SQLException e) { /* log error */ }
+			}
+			if( conn != null ) {
+				try { conn.close(); } catch (SQLException e) { /* log error */ }
+			}
+		}
+
 	}
 
 	/**
