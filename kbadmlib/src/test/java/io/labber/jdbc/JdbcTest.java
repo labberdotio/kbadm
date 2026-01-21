@@ -8,9 +8,15 @@ package io.labber.jdbc;
 
 import java.sql.SQLException;
 
+import javax.sql.DataSource;
+
 import org.junit.Test;
 import org.junit.runner.RunWith;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.jdbc.DataSourceBuilder;
+import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
@@ -30,9 +36,32 @@ public class JdbcTest {
 
 		// Bean definitions go here.
 
+		@Bean
+		public DataSource dataSource() {
+
+			DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
+			dataSourceBuilder.driverClassName("org.postgresql.Driver");
+			dataSourceBuilder.url("jdbc:postgresql://localhost:5432/your_database_name");
+			dataSourceBuilder.username("your_username");
+			dataSourceBuilder.password("your_password");
+
+			return dataSourceBuilder.build();
+	    }
+
+		@Bean
+		public JdbcTemplate jdbcTemplate() {
+			return new JdbcTemplate(this.dataSource());
+		}
+
 	}
 
 	// Bean references go here.
+
+	@Autowired
+	DataSource dataSource;
+
+	@Autowired
+	JdbcTemplate jdbcTemplate;
 
 	/**
 	 * Create the test case
