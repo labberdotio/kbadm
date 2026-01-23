@@ -190,4 +190,104 @@ public class Document {
 		this.timestamp = timestamp;
 	}
 
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public Document withId(String id) {
+		this.id = id;
+		return this;
+	}
+
+	/**
+	 * 
+	 * @param name
+	 * @return
+	 */
+	public Document withName(String name) {
+		this.name = name;
+		return this;
+	}
+
+	/**
+	 * 
+	 * @param description
+	 * @return
+	 */
+	public Document withDescription(String description) {
+		this.description = description;
+		return this;
+	}
+
+	/**
+	 * 
+	 * @param chunks
+	 * @return
+	 */
+	public Document withChunks(int chunks) {
+		this.chunks = chunks;
+		return this;
+	}
+
+	/**
+	 * 
+	 * @param total
+	 * @return
+	 */
+	public Document withTotal(int total) {
+		this.total = total;
+		return this;
+	}
+
+	/**
+	 * 
+	 * @param status
+	 * @return
+	 */
+	public Document withStatus(String status) {
+		this.status = status;
+		return this;
+	}
+
+	/**
+	 * 
+	 * @param reason
+	 * @return
+	 */
+	public Document withReason(String reason) {
+		this.reason = reason;
+		return this;
+	}
+
+	/**
+	 * 
+	 * @param created
+	 * @return
+	 */
+	public Document withCreated(Date created) {
+		this.created = created;
+		return this;
+	}
+
+	/**
+	 * 
+	 * @param modified
+	 * @return
+	 */
+	public Document withModified(Date modified) {
+		this.modified = modified;
+		return this;
+	}
+
+	/**
+	 * 
+	 * @param timestamp
+	 * @return
+	 */
+	public Document withTimestamp(Date timestamp) {
+		this.timestamp = timestamp;
+		return this;
+	}
+
 }

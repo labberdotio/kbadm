@@ -70,4 +70,34 @@ public class DocumentChunk {
 		this.timestamp = timestamp;
 	}
 
+	/**
+	 * 
+	 * @param documentId
+	 * @return
+	 */
+	public DocumentChunk withDocumentId(String documentId) {
+		this.documentId = documentId;
+		return this;
+	}
+
+	/**
+	 * 
+	 * @param vectorId
+	 * @return
+	 */
+	public DocumentChunk withVectorId(String vectorId) {
+		this.vectorId = vectorId;
+		return this;
+	}
+
+	/**
+	 * 
+	 * @param timestamp
+	 * @return
+	 */
+	public DocumentChunk withTimestamp(Date timestamp) {
+		this.timestamp = timestamp;
+		return this;
+	}
+
 }
