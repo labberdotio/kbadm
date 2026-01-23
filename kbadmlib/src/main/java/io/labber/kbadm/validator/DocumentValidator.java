@@ -40,9 +40,17 @@ public class DocumentValidator {
 			return Status.INITIAL;
 		}
 
+		if( this.document.getId() == null ) {
+			return Status.INITIAL;
+		}
+
+		if( this.document.getName() == null ) {
+			return Status.INITIAL;
+		}
+
 		int chunk_count = 0;
-		int total_chunks = 0;
-		int chunk_index = 0;
+		// int total_chunks = 0;
+		// int chunk_index = 0;
 
 		List<Integer> chunk_indexes = new ArrayList<Integer>();
 
@@ -62,27 +70,41 @@ public class DocumentValidator {
 
 			Metadata metadata = new Metadata(chunk);
 
-			total_chunks = metadata.getTotalChunks();
-			chunk_index = metadata.getChunkIndex();
+			// total_chunks = metadata.getTotalChunks();
+			// chunk_index = metadata.getChunkIndex();
 
-			if( total_chunks != chunk_count ) {
-				return Status.INCOMPLETE;
-			}
-
-			if( chunk_indexes.contains(chunk_index) ) {
+			if( !this.document.getId().equalsIgnoreCase(metadata.getParentDocumentId()) ) {
+				System.out.println(" !! FAILED !! ");
+				System.out.println(this.document.getId());
+				System.out.println(metadata.getParentDocumentId());
 				return Status.FAILED;
 			}
 
-			chunk_indexes.add(chunk_index);
+			if( !this.document.getName().equalsIgnoreCase(metadata.getSource()) ) {
+				System.out.println(" !! FAILED !! ");
+				System.out.println(this.document.getName());
+				System.out.println(metadata.getSource());
+				return Status.FAILED;
+			}
+
+			if( metadata.getTotalChunks() != chunk_count ) {
+				return Status.INCOMPLETE;
+			}
+
+			if( chunk_indexes.contains(metadata.getChunkIndex()) ) {
+				return Status.FAILED;
+			}
+
+			chunk_indexes.add(metadata.getChunkIndex());
 		}
 
 		if( chunk_indexes.size() != chunk_count ) {
 			return Status.INCOMPLETE;
 		}
 
-		if( chunk_indexes.size() != total_chunks ) {
-			return Status.INCOMPLETE;
-		}
+		// if( chunk_indexes.size() != total_chunks ) {
+		// 	return Status.INCOMPLETE;
+		// }
 
 		return Status.COMPLETE;
 	}
