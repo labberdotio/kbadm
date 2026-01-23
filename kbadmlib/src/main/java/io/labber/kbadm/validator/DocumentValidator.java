@@ -1,5 +1,7 @@
 package io.labber.kbadm.validator;
 
+import java.sql.Date;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
@@ -11,7 +13,7 @@ import io.labber.kbadm.model.Document;
 import io.labber.kbadm.model.Metadata;
 import io.labber.kbadm.model.Status;
 
-public class DocumentValidator {
+public class DocumentValidator implements IDocumentValidator {
 
 	protected Document document;
 	protected Collection<Chunk> chunks;
@@ -34,7 +36,7 @@ public class DocumentValidator {
 	 * @return
 	 * @throws KBException
 	 */
-	public Status validate() throws KBException {
+	public Status status() throws KBException {
 
 		if( this.document == null ) {
 			return Status.INITIAL;
@@ -107,6 +109,25 @@ public class DocumentValidator {
 		// }
 
 		return Status.COMPLETE;
+	}
+
+	/**
+	 * 
+	 * @return
+	 * @throws KBException
+	 */
+	public Document validate() throws KBException {
+		return new Document()
+			.withId(this.document.getId())
+			.withName(this.document.getName())
+			.withDescription(this.document.getDescription())
+			.withChunks(0)
+			.withTotal(0)
+			.withStatus(this.status().getStatus())
+			.withReason(this.status().getStatus())
+			.withCreated(this.document.getCreated())
+			.withModified(this.document.getModified())
+			.withTimestamp(Date.valueOf(LocalDate.now()));
 	}
 
 }
