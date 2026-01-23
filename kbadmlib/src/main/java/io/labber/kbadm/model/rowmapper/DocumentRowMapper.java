@@ -29,6 +29,11 @@ public class DocumentRowMapper implements RowMapper<Document> {
 		document.setName(rs.getString("name"));
 		document.setDescription(rs.getString("description"));
 
+		document.setChunks(rs.getInt("chunks"));
+		document.setTotal(rs.getInt("total"));
+		document.setStatus(rs.getString("status"));
+		document.setReason(rs.getString("reason"));
+
 		document.setCreated(rs.getDate("created"));
 		document.setModified(rs.getDate("modified"));
 		document.setTimestamp(rs.getDate("timestamp"));

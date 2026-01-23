@@ -21,6 +21,11 @@ public class Document {
 	protected String name;
 	protected String description;
 
+	protected int chunks;
+	protected int total;
+	protected String status;
+	protected String reason;
+
 	protected Date created;
 	protected Date modified;
 	protected Date timestamp;
@@ -71,6 +76,70 @@ public class Document {
 	 */
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public int getChunks() {
+		return chunks;
+	}
+
+	/**
+	 * 
+	 * @param chunks
+	 */
+	public void setChunks(int chunks) {
+		this.chunks = chunks;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public int getTotal() {
+		return total;
+	}
+
+	/**
+	 * 
+	 * @param total
+	 */
+	public void setTotal(int total) {
+		this.total = total;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getStatus() {
+		return status;
+	}
+
+	/**
+	 * 
+	 * @param status
+	 */
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getReason() {
+		return reason;
+	}
+
+	/**
+	 * 
+	 * @param reason
+	 */
+	public void setReason(String reason) {
+		this.reason = reason;
 	}
 
 	/**
