@@ -37,8 +37,8 @@ public class Metadata {
 		this.chunk_index = Integer.parseInt(metadata.get("chunk_index").toString());
 		this.total_chunks = Integer.parseInt(metadata.get("total_chunks").toString());
 
-		this.source = metadata.get("chunk_index").toString();
-		this.parent_document_id = metadata.get("chunk_index").toString();
+		this.source = metadata.get("source").toString();
+		this.parent_document_id = metadata.get("parent_document_id").toString();
 
 	}
 
@@ -64,8 +64,8 @@ public class Metadata {
 		this.chunk_index = Integer.parseInt(metadata.get("chunk_index").toString());
 		this.total_chunks = Integer.parseInt(metadata.get("total_chunks").toString());
 
-		this.source = metadata.get("chunk_index").toString();
-		this.parent_document_id = metadata.get("chunk_index").toString();
+		this.source = metadata.get("source").toString();
+		this.parent_document_id = metadata.get("parent_document_id").toString();
 
 	}
 
