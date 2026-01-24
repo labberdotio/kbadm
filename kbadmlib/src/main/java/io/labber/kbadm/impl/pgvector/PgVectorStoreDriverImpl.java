@@ -12,6 +12,7 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Collection;
+import java.util.Iterator;
 
 import org.springframework.ai.embedding.EmbeddingModel;
 import org.springframework.ai.vectorstore.VectorStore;
@@ -357,6 +358,46 @@ public class PgVectorStoreDriverImpl extends Driver {
 		}
 
 		return list;
+	}
+
+	/**
+	 * 
+	 * @param document
+	 * @return
+	 * @throws SQLException
+	 */
+	protected Collection<Document> getDocuments(String document) throws SQLException {
+		return this.runDocumentStatement("SELECT * FROM document_store WHERE name = '" + document.replace("'", "''") + "';");
+	}
+
+	/**
+	 * 
+	 * @param document
+	 * @return
+	 * @throws SQLException
+	 */
+	protected Collection<Chunk> getChunks(String document) throws SQLException {
+		return this.runChunkStatement("SELECT * FROM vector_store WHERE metadata->>'source' = '" + document.replace("'", "''") + "';");
+	}
+
+	/**
+	 * 
+	 * @param document
+	 * @return
+	 * @throws SQLException
+	 */
+	protected Collection<Chunk> getChunks(Document document) throws SQLException {
+		return this.runChunkStatement("SELECT * FROM vector_store WHERE metadata->>'parent_document_id' = '" + document.getId().replace("'", "''") + "';");
+	}
+
+	/**
+	 * 
+	 * @param document
+	 * @return
+	 * @throws SQLException
+	 */
+	protected Collection<DocumentChunk> getDocumentChunks(Document document) throws SQLException {
+		return this.runDocumentChunkStatement("SELECT * FROM document_chunk WHERE document_id = '" + document.getId().replace("'", "''") + "';");
 	}
 
 	/**
