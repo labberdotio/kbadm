@@ -47,6 +47,29 @@ public class PgVectorStoreDriverImpl extends Driver {
 
 	/**
 	 * 
+	 * @throws KBException
+	 */
+	public void createSchema() throws KBException {
+		this.createTable(
+			"CREATE TABLE IF NOT EXISTS " + this.getStoreTableName() + " ("
+					+ " id SERIAL PRIMARY KEY,"
+					+ " name VARCHAR(255) NOT NULL"
+					+ ");"
+		);
+	}
+
+	/**
+	 * 
+	 * @throws KBException
+	 */
+	public void destroySchema() throws KBException {
+		this.dropTable(
+			"DROP TABLE IF EXISTS " + this.getStoreTableName() + ";"
+		);
+	}
+
+	/**
+	 * 
 	 * @param table
 	 * @return
 	 */
