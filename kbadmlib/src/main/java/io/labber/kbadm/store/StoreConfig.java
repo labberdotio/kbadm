@@ -10,6 +10,7 @@ import java.util.HashMap;
 import java.util.Map;
 import java.util.Properties;
 import java.util.Set;
+import java.util.UUID;
 
 /**
  * 
@@ -18,12 +19,20 @@ import java.util.Set;
  */
 public class StoreConfig implements IStoreConfig {
 
+	protected String id;
+	protected UUID uuid;
+	protected String name;
+
 	/**
 	 * 
 	 * @param properties
 	 */
 	public StoreConfig(Map<String, Object> properties) {
-		// 
+		this.id = this.readString("id", properties, null);
+		this.uuid = UUID.fromString(
+			this.readString("uuid", properties, UUID.randomUUID().toString())
+		);
+		this.name = this.readString("name", properties, null);
 	}
 
 	/**
@@ -31,14 +40,35 @@ public class StoreConfig implements IStoreConfig {
 	 * @param properties
 	 */
 	public StoreConfig(Properties properties) {
-		// 
+		this.id = this.readString("id", this.readProperties(properties), null);
+		this.uuid = UUID.fromString(
+			this.readString("uuid", this.readProperties(properties), UUID.randomUUID().toString())
+		);
+		this.name = this.readString("name", this.readProperties(properties), null);
 	}
 
 	/**
 	 * 
 	 */
 	public StoreConfig() {
-		// 
+		this.id = null;
+		this.uuid = UUID.randomUUID();
+		this.name = null;
+	}
+
+	@Override
+	public String getId() {
+		return this.id;
+	}
+
+	@Override
+	public UUID getUuid() {
+		return this.uuid;
+	}
+
+	@Override
+	public String getName() {
+		return this.name;
 	}
 
 	/**
