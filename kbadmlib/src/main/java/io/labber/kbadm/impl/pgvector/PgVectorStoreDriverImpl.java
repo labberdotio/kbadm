@@ -39,6 +39,66 @@ public class PgVectorStoreDriverImpl extends Driver {
 
 	/**
 	 * 
+	 * @param table
+	 * @return
+	 */
+	protected String getTableName(String table) {
+		// TODO: Clean up to only generate valid PostgreSQL table names.
+		return this.config.getName().toLowerCase() + "_" + table;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	protected String getStoreTableName() {
+		return this.config.getName().toLowerCase();
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	protected String getStoreConfigTableName() {
+		return this.getTableName("config");
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	protected String getStoreMetadataTableName() {
+		return this.getTableName("metadata");
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	protected String getStoreDocumentsTableName() {
+		return this.getTableName("documents");
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	protected String getStoreChunksTableName() {
+		return this.getTableName("chunks");
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	protected String getVectorStoreTableName() {
+		return this.getTableName(
+			this.config.getVectorTableName() // PgVectorStore.DEFAULT_TABLE_NAME // "vector_store"
+		);
+	}
+
+	/**
+	 * 
 	 * @param jdbcTemplate
 	 * @param embeddingModel
 	 * @return
@@ -59,7 +119,9 @@ public class PgVectorStoreDriverImpl extends Driver {
 		).schemaName(
 			this.config.getSchemaName() // PgVectorStore.DEFAULT_SCHEMA_NAME
 		).vectorTableName(
-			this.config.getVectorTableName() // PgVectorStore.DEFAULT_TABLE_NAME // "vector_store"
+			this.getTableName(
+				this.config.getVectorTableName() // PgVectorStore.DEFAULT_TABLE_NAME // "vector_store"
+			)
 		).initializeSchema(
 			this.config.isInitializeSchema() // true
 		).removeExistingVectorStoreTable(
