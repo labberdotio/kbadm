@@ -34,37 +34,40 @@ public class PgVectorStoreDriverImpl extends Driver {
 
 	/**
 	 * 
+	 * @param jdbcTemplate
 	 * @param store
 	 */
 	public PgVectorStoreDriverImpl(
+		JdbcTemplate jdbcTemplate, 
 		PgVectorStoreImpl store
 	) {
 		super(store);
 		this.store = store;
 		this.config = store.getConfig();
 		this.metadata = store.getMetadata();
+		this.jdbcTemplate = jdbcTemplate;
 	}
 
-	public void init() throws KBException {
-
-		/*
-		 * Main table
-		 */
-		try(
-			Connection conn = this.jdbcTemplate.getDataSource().getConnection();
-			Statement stmt = conn.createStatement();
-		) {
-			stmt.executeUpdate(
-					"CREATE TABLE IF NOT EXISTS " + this.getStoreTableName() + " ("
-							+ " id SERIAL PRIMARY KEY,"
-							+ " name VARCHAR(255) NOT NULL"
-							+ ");"
-			);
-		} catch( SQLException e ) {
-			e.printStackTrace();
-		}
-
-	}
+//	public void init() throws KBException {
+//
+//		/*
+//		 * Main table
+//		 */
+//		try(
+//			Connection conn = this.jdbcTemplate.getDataSource().getConnection();
+//			Statement stmt = conn.createStatement();
+//		) {
+//			stmt.executeUpdate(
+//					"CREATE TABLE IF NOT EXISTS " + this.getStoreTableName() + " ("
+//							+ " id SERIAL PRIMARY KEY,"
+//							+ " name VARCHAR(255) NOT NULL"
+//							+ ");"
+//			);
+//		} catch( SQLException e ) {
+//			e.printStackTrace();
+//		}
+//
+//	}
 
 	/**
 	 * 
