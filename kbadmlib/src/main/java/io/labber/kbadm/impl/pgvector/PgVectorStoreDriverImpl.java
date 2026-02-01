@@ -23,8 +23,10 @@ import io.labber.kbadm.KBException;
 import io.labber.kbadm.driver.Driver;
 import io.labber.kbadm.model.Chunk;
 import io.labber.kbadm.model.Document;
+import io.labber.kbadm.model.DocumentChunk;
 import io.labber.kbadm.model.rowmapper.ChunkRowMapper;
 import io.labber.kbadm.model.rowmapper.DocumentRowMapper;
+import io.labber.kbadm.model.rowmapper.DocumentChunkRowMapper;
 
 /**
  * 
@@ -297,6 +299,48 @@ public class PgVectorStoreDriverImpl extends Driver {
 			};
 
 			list = tmpl.query(psc, new ChunkRowMapper());
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if( rs != null ) {
+				try { rs.close(); } catch (SQLException e) { /* log error */ }
+			}
+			if( stmt != null ) {
+				try { stmt.close(); } catch (SQLException e) { /* log error */ }
+			}
+			if( conn != null ) {
+				try { conn.close(); } catch (SQLException e) { /* log error */ }
+			}
+		}
+
+		return list;
+	}
+
+	/**
+	 * 
+	 * @param statment
+	 * @return
+	 * @throws SQLException
+	 */
+	protected Collection<DocumentChunk> runDocumentChunkStatement(String statment) throws SQLException {
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		Collection<DocumentChunk> list = null;
+		try {
+
+			JdbcTemplate tmpl = this.jdbcTemplate;
+			PreparedStatementCreator psc = new PreparedStatementCreator() {
+				@Override
+				public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+					PreparedStatement ps = con.prepareCall(statment);
+					return ps;
+				}
+			};
+
+			list = tmpl.query(psc, new DocumentChunkRowMapper());
 
 		} catch (Exception e) {
 			e.printStackTrace();
