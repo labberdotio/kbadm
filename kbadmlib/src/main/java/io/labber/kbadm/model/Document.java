@@ -6,6 +6,8 @@
 
 package io.labber.kbadm.model;
 
+import java.sql.Date;
+
 /**
  * 
  * @author john
@@ -18,6 +20,10 @@ public class Document {
 	protected String id;
 	protected String name;
 	protected String description;
+
+	protected Date created;
+	protected Date modified;
+	protected Date timestamp;
 
 	/**
 	 * 
@@ -65,6 +71,54 @@ public class Document {
 	 */
 	public void setDescription(String description) {
 		this.description = description;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public Date getCreated() {
+		return created;
+	}
+
+	/**
+	 * 
+	 * @param created
+	 */
+	public void setCreated(Date created) {
+		this.created = created;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public Date getModified() {
+		return modified;
+	}
+
+	/**
+	 * 
+	 * @param modified
+	 */
+	public void setModified(Date modified) {
+		this.modified = modified;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public Date getTimestamp() {
+		return timestamp;
+	}
+
+	/**
+	 * 
+	 * @param timestamp
+	 */
+	public void setTimestamp(Date timestamp) {
+		this.timestamp = timestamp;
 	}
 
 }
