@@ -28,6 +28,8 @@ public class DocumentChunkRowMapper implements RowMapper<DocumentChunk> {
 		chunk.setDocumentId(rs.getString("document_id"));
 		chunk.setVectorId(rs.getString("vector_id"));
 
+		chunk.setTimestamp(rs.getDate("timestamp"));
+
 		return chunk;
 	}
 

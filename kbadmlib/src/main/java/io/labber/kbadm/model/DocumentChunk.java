@@ -6,6 +6,8 @@
 
 package io.labber.kbadm.model;
 
+import java.sql.Date;
+
 /**
  * 
  * @author john
@@ -17,6 +19,8 @@ public class DocumentChunk {
 
 	protected String documentId;
 	protected String vectorId;
+
+	protected Date timestamp;
 
 	/**
 	 * 
@@ -48,6 +52,22 @@ public class DocumentChunk {
 	 */
 	public void setVectorId(String vectorId) {
 		this.vectorId = vectorId;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public Date getTimestamp() {
+		return timestamp;
+	}
+
+	/**
+	 * 
+	 * @param timestamp
+	 */
+	public void setTimestamp(Date timestamp) {
+		this.timestamp = timestamp;
 	}
 
 }
