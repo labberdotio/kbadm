@@ -1,11 +1,19 @@
-package io.labber.kbadm.validator;
 
-import org.apache.commons.lang3.tuple.Pair;
+// 
+// Copyright (c) 2026, John Grundback
+// All rights reserved.
+// 
+
+package io.labber.kbadm.validator;
 
 import io.labber.kbadm.KBException;
 import io.labber.kbadm.model.Document;
-import io.labber.kbadm.model.Status;
 
+/**
+ * 
+ * @author john
+ *
+ */
 public interface IDocumentValidator {
 
 	/**
@@ -13,7 +21,7 @@ public interface IDocumentValidator {
 	 * @return
 	 * @throws KBException
 	 */
-	public Pair<Status, String> status() throws KBException;
+	public ValidationStatus status() throws KBException;
 
 	/**
 	 * 
