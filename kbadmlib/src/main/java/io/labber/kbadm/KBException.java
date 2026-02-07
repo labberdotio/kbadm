@@ -17,10 +17,27 @@ public class KBException extends Exception {
 
 	/**
 	 * 
+	 * @param s
+	 */
+	public KBException(String s) {
+		super(s);
+	}
+
+	/**
+	 * 
 	 * @param e
 	 */
 	public KBException(Exception e) {
 		super(e);
+	}
+
+	/**
+	 * 
+	 * @param s
+	 * @param e
+	 */
+	public KBException(String s, Exception e) {
+		super(s, e);
 	}
 
 }
