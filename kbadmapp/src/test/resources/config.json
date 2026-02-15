@@ -1,0 +1,44 @@
+{
+	"endpoints": [{
+		"name": "ollama", 
+		"type": "ollama", 
+		"config": {
+			"url": "http://localhost:11434", 
+			"model": "gpt-oss", 
+			"models": ["gpt-oss"], 
+			"embeddingModel": "nomic-embed-text", 
+			"embeddingModels": ["nomic-embed-text"]
+		}
+	}], 
+	"datasources": [{
+		"name": "postgres", 
+		"type": "postgresql", 
+		"config": {
+			"driver": "org.postgresql.Driver", 
+			"url": "jdbc:postgresql://localhost:5432/", 
+			"username": "", 
+			"password": ""
+		}
+	}], 
+	"vectorstores": [{
+		"name": "postgres", 
+		"datasource": "postgres", 
+		"config": {
+			"indexType": "HNSW", 
+			"distanceType": "COSINE_DISTANCE", 
+			"dimensions": 1024, 
+			"schemaName": "public", 
+			"vectorTableName": "vector_store"
+		}
+	}], 
+	"knowledgebases": [{
+		"name": "postgres", 
+		"vectorstore": "postgres", 
+		"config": {
+			"endpoint": "ollama", 
+			"model": "nomic-embed-text", 
+			"schemaName": "public", 
+			"tablePrefix": ""
+		}
+	}]
+}
