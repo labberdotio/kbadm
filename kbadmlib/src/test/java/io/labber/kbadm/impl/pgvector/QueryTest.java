@@ -47,7 +47,7 @@ public class QueryTest {
 
 			DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
 			dataSourceBuilder.driverClassName("org.postgresql.Driver");
-			dataSourceBuilder.url("jdbc:postgresql://10.88.88.193:5432/pgvector_db");
+			dataSourceBuilder.url("jdbc:postgresql://10.88.88.197:5432/pgvector_db");
 			dataSourceBuilder.username("postgres");
 			dataSourceBuilder.password("postgres");
 

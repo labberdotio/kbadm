@@ -6,7 +6,6 @@
 
 package io.labber.kbadm.impl.pgvector;
 
-import java.sql.SQLException;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -23,6 +22,7 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
+import io.labber.kbadm.KBException;
 import io.labber.kbadm.model.Chunk;
 import io.labber.kbadm.model.Document;
 import io.labber.kbadm.model.DocumentChunk;
@@ -47,7 +47,7 @@ public class QueryTest2 {
 
 			DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
 			dataSourceBuilder.driverClassName("org.postgresql.Driver");
-			dataSourceBuilder.url("jdbc:postgresql://10.88.88.193:5432/pgvector_db");
+			dataSourceBuilder.url("jdbc:postgresql://10.88.88.197:5432/pgvector_db");
 			dataSourceBuilder.username("postgres");
 			dataSourceBuilder.password("postgres");
 
@@ -98,7 +98,7 @@ public class QueryTest2 {
 	// }
 
 	@Test
-	public void testDocumentQuery() throws SQLException {
+	public void testDocumentQuery() throws KBException {
 
 		PgVectorStoreDriverImpl driver = new PgVectorStoreDriverImpl(
 			this.jdbcTemplate, 
@@ -121,7 +121,7 @@ public class QueryTest2 {
 	}
 
 	@Test
-	public void testChunkQuery() throws SQLException {
+	public void testChunkQuery() throws KBException {
 
 		PgVectorStoreDriverImpl driver = new PgVectorStoreDriverImpl(
 			this.jdbcTemplate, 
@@ -146,7 +146,7 @@ public class QueryTest2 {
 	}
 
 	@Test
-	public void testChunkQuery2() throws SQLException {
+	public void testChunkQuery2() throws KBException {
 
 		PgVectorStoreDriverImpl driver = new PgVectorStoreDriverImpl(
 			this.jdbcTemplate, 
@@ -171,7 +171,7 @@ public class QueryTest2 {
 	}
 
 	@Test
-	public void testDocumentChunkQuery() throws SQLException {
+	public void testDocumentChunkQuery() throws KBException {
 
 		PgVectorStoreDriverImpl driver = new PgVectorStoreDriverImpl(
 			this.jdbcTemplate, 
