@@ -31,8 +31,8 @@ import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
 
-import io.labber.kbadm.model.Chunk;
-import io.labber.kbadm.model.rowmapper.ChunkRowMapper;
+import io.labber.kbadm.model.Document;
+import io.labber.kbadm.model.rowmapper.DocumentRowMapper;
 
 /**
  * 
@@ -41,8 +41,8 @@ import io.labber.kbadm.model.rowmapper.ChunkRowMapper;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(loader = AnnotationConfigContextLoader.class)
-// public class JdbcTest extends TestCase {
-public class JdbcTest {
+// public class JdbcTest5 extends TestCase {
+public class JdbcTest5 {
 
 	@Configuration
 	static class ContextConfiguration {
@@ -176,12 +176,12 @@ public class JdbcTest {
 	 * @return
 	 * @throws SQLException
 	 */
-	protected Collection<Chunk> runChunkStatement(String statment) throws SQLException {
+	protected Collection<Document> runDocumentStatement(String statment) throws SQLException {
 
 		Connection conn = null;
 		PreparedStatement stmt = null;
 		ResultSet rs = null;
-		Collection<Chunk> list = null;
+		Collection<Document> list = null;
 		try {
 
 			JdbcTemplate tmpl = this.jdbcTemplate;
@@ -193,7 +193,7 @@ public class JdbcTest {
 				}
 			};
 
-			list = tmpl.query(psc, new ChunkRowMapper());
+			list = tmpl.query(psc, new DocumentRowMapper());
 
 		} catch (Exception e) {
 			e.printStackTrace();
@@ -220,7 +220,7 @@ public class JdbcTest {
 			PreparedStatement ps = jdbcTemplate
 				.getDataSource()
 				.getConnection()
-				.prepareStatement("SELECT * FROM vector_store LIMIT 100;");
+				.prepareStatement("SELECT * FROM document_store LIMIT 100;");
 			ResultSet rs = ps.executeQuery();
 			while (rs.next()) {
 				System.out.println(rs.getString(1));
@@ -237,7 +237,7 @@ public class JdbcTest {
 	// @Test
 	public void testSimple2() throws SQLException {
 
-		Collection<Map<String, Object>> rsdata = this.runStatement("SELECT * FROM vector_store LIMIT 100;");
+		Collection<Map<String, Object>> rsdata = this.runStatement("SELECT * FROM document_store LIMIT 100;");
 		Iterator<Map<String, Object>> rsiter = rsdata.iterator();
 		while(rsiter.hasNext()) {
 			System.out.println(
@@ -250,15 +250,13 @@ public class JdbcTest {
 	// @Test
 	public void testSimple3() throws SQLException {
 
-		Collection<Chunk> list = this.runChunkStatement("SELECT * FROM vector_store LIMIT 100;");
-		Iterator<Chunk> listiter = list.iterator();
+		Collection<Document> list = this.runDocumentStatement("SELECT * FROM document_store LIMIT 100;");
+		Iterator<Document> listiter = list.iterator();
 		while(listiter.hasNext()) {
-			Chunk chunk = listiter.next();
-			System.out.println(chunk);
-			System.out.println(chunk.getId());
-			System.out.println(chunk.getMetadata());
-			System.out.println(chunk.getEmbedding());
-			System.out.println(chunk.getContent());
+			Document document = listiter.next();
+			System.out.println(document);
+			System.out.println(document.getId());
+			System.out.println(document.getName());
 		}
 
 	}
@@ -266,16 +264,13 @@ public class JdbcTest {
 	@Test
 	public void testSimple4() throws SQLException {
 
-		// Collection<Chunk> list = this.runChunkStatement("SELECT * FROM vector_store WHERE (metadata->'source')::jsonb ? 'FreeBSD 12.2 Handbook.pdf';");
-		Collection<Chunk> list = this.runChunkStatement("SELECT * FROM vector_store WHERE metadata->>'source' = 'FreeBSD 12.2 Handbook.pdf' LIMIT 100;");
-		Iterator<Chunk> listiter = list.iterator();
+		Collection<Document> list = this.runDocumentStatement("SELECT * FROM document_store WHERE name = 'FreeBSD 12.2 Handbook.pdf' LIMIT 100;");
+		Iterator<Document> listiter = list.iterator();
 		while(listiter.hasNext()) {
-			Chunk chunk = listiter.next();
-			System.out.println(chunk);
-			System.out.println(chunk.getId());
-			System.out.println(chunk.getMetadata());
-			System.out.println(chunk.getEmbedding());
-			System.out.println(chunk.getContent());
+			Document document = listiter.next();
+			System.out.println(document);
+			System.out.println(document.getId());
+			System.out.println(document.getName());
 		}
 
 	}

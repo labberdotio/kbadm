@@ -11,10 +11,10 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.ResultSetMetaData;
 import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashMap;
-import java.util.Iterator;
 import java.util.Map;
 
 import javax.sql.DataSource;
@@ -26,13 +26,9 @@ import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.jdbc.core.JdbcTemplate;
-import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.test.context.ContextConfiguration;
 import org.springframework.test.context.junit4.SpringJUnit4ClassRunner;
 import org.springframework.test.context.support.AnnotationConfigContextLoader;
-
-import io.labber.kbadm.model.Chunk;
-import io.labber.kbadm.model.rowmapper.ChunkRowMapper;
 
 /**
  * 
@@ -41,8 +37,8 @@ import io.labber.kbadm.model.rowmapper.ChunkRowMapper;
  */
 @RunWith(SpringJUnit4ClassRunner.class)
 @ContextConfiguration(loader = AnnotationConfigContextLoader.class)
-// public class JdbcTest extends TestCase {
-public class JdbcTest {
+// public class JdbcTest2 extends TestCase {
+public class JdbcTest2 {
 
 	@Configuration
 	static class ContextConfiguration {
@@ -172,31 +168,26 @@ public class JdbcTest {
 
 	/**
 	 * 
-	 * @param statment
+	 * @param createTableSQL
 	 * @return
 	 * @throws SQLException
 	 */
-	protected Collection<Chunk> runChunkStatement(String statment) throws SQLException {
+	protected boolean createTable(String createTableSQL) throws SQLException {
 
+		/*
+		 * 
+		 */
 		Connection conn = null;
-		PreparedStatement stmt = null;
+		Statement stmt = null;
 		ResultSet rs = null;
-		Collection<Chunk> list = null;
 		try {
-
-			JdbcTemplate tmpl = this.jdbcTemplate;
-			PreparedStatementCreator psc = new PreparedStatementCreator() {
-				@Override
-				public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
-					PreparedStatement ps = con.prepareCall(statment);
-					return ps;
-				}
-			};
-
-			list = tmpl.query(psc, new ChunkRowMapper());
-
-		} catch (Exception e) {
-			e.printStackTrace();
+			conn = this.jdbcTemplate.getDataSource().getConnection();
+			stmt = conn.createStatement();
+			stmt.executeUpdate(createTableSQL);
+			return true;
+		} catch( SQLException e ) {
+			throw e;
+			// return false;
 		} finally {
 			if( rs != null ) {
 				try { rs.close(); } catch (SQLException e) { /* log error */ }
@@ -209,74 +200,137 @@ public class JdbcTest {
 			}
 		}
 
-		return list;
 	}
 
-	// @Test
-	public void testSimple() throws SQLException {
+	/**
+	 * 
+	 * @param dropTableSQL
+	 * @return
+	 * @throws SQLException
+	 */
+	protected boolean dropTable(String dropTableSQL) throws SQLException {
 
+		/*
+		 * 
+		 */
+		Connection conn = null;
+		Statement stmt = null;
+		ResultSet rs = null;
 		try {
-
-			PreparedStatement ps = jdbcTemplate
-				.getDataSource()
-				.getConnection()
-				.prepareStatement("SELECT * FROM vector_store LIMIT 100;");
-			ResultSet rs = ps.executeQuery();
-			while (rs.next()) {
-				System.out.println(rs.getString(1));
+			conn = this.jdbcTemplate.getDataSource().getConnection();
+			stmt = conn.createStatement();
+			stmt.executeUpdate(dropTableSQL);
+			return true;
+		} catch( SQLException e ) {
+			throw e;
+			// return false;
+		} finally {
+			if( rs != null ) {
+				try { rs.close(); } catch (SQLException e) { /* log error */ }
 			}
-			rs.close();
-			ps.close();
-
-		} catch (Exception e) {
-			e.printStackTrace();
+			if( stmt != null ) {
+				try { stmt.close(); } catch (SQLException e) { /* log error */ }
+			}
+			if( conn != null ) {
+				try { conn.close(); } catch (SQLException e) { /* log error */ }
+			}
 		}
 
 	}
 
-	// @Test
-	public void testSimple2() throws SQLException {
+	/**
+	 * 
+	 * @throws SQLException
+	 */
+	public void createSchema() throws SQLException {
 
-		Collection<Map<String, Object>> rsdata = this.runStatement("SELECT * FROM vector_store LIMIT 100;");
-		Iterator<Map<String, Object>> rsiter = rsdata.iterator();
-		while(rsiter.hasNext()) {
-			System.out.println(
-				rsiter.next().keySet()
-			);
-		}
+		/*
+		 * 
+		 */
+
+		this.createTable(
+			"CREATE TABLE IF NOT EXISTS " + "document_store" + " ("
+					+ " id UUID DEFAULT uuid_generate_v4() PRIMARY KEY,"
+					+ " name VARCHAR(255) NOT NULL,"
+					+ " description text"
+					+ ");"
+		);
+
+		this.createTable(
+			"CREATE TABLE IF NOT EXISTS " + "document_chunk" + " ("
+					+ " document_id UUID REFERENCES document_store(id) NOT NULL,"
+					+ " vector_id UUID REFERENCES vector_store(id) NOT NULL"
+					+ ");"
+		);
+
+		/*
+		 * 
+		 */
+
+		this.createTable(
+			"ALTER TABLE document_chunk ALTER COLUMN document_id SET NOT NULL;"
+		);
+
+		this.createTable(
+			"ALTER TABLE document_chunk ALTER COLUMN vector_id SET NOT NULL;"
+		);
+
+		/*
+		 * 
+		 */
+
+		this.createTable(
+			"ALTER TABLE document_store ADD COLUMN created TIMESTAMPTZ;"
+		);
+
+		this.createTable(
+			"ALTER TABLE document_store ADD COLUMN modified TIMESTAMPTZ;"
+		);
+
+		this.createTable(
+			"ALTER TABLE document_store ADD COLUMN timestamp TIMESTAMPTZ;"
+		);
+
+		this.createTable(
+			"ALTER TABLE document_chunk ADD COLUMN timestamp TIMESTAMPTZ;"
+		);
+
+		/*
+		 * 
+		 */
+
+		this.createTable(
+			"ALTER TABLE document_store ADD COLUMN chunks int;"
+		);
+
+		this.createTable(
+			"ALTER TABLE document_store ADD COLUMN total int;"
+		);
+
+		this.createTable(
+			"ALTER TABLE document_store ADD COLUMN status VARCHAR(255);"
+		);
+
+		this.createTable(
+			"ALTER TABLE document_store ADD COLUMN reason text;"
+		);
 
 	}
 
-	// @Test
-	public void testSimple3() throws SQLException {
-
-		Collection<Chunk> list = this.runChunkStatement("SELECT * FROM vector_store LIMIT 100;");
-		Iterator<Chunk> listiter = list.iterator();
-		while(listiter.hasNext()) {
-			Chunk chunk = listiter.next();
-			System.out.println(chunk);
-			System.out.println(chunk.getId());
-			System.out.println(chunk.getMetadata());
-			System.out.println(chunk.getEmbedding());
-			System.out.println(chunk.getContent());
-		}
-
+	/**
+	 * 
+	 * @throws SQLException
+	 */
+	public void destroySchema() throws SQLException {
+		this.dropTable(
+			"DROP TABLE IF EXISTS " + "document_store" + ";"
+		);
 	}
 
 	@Test
-	public void testSimple4() throws SQLException {
+	public void testCreateSchema() throws SQLException {
 
-		// Collection<Chunk> list = this.runChunkStatement("SELECT * FROM vector_store WHERE (metadata->'source')::jsonb ? 'FreeBSD 12.2 Handbook.pdf';");
-		Collection<Chunk> list = this.runChunkStatement("SELECT * FROM vector_store WHERE metadata->>'source' = 'FreeBSD 12.2 Handbook.pdf' LIMIT 100;");
-		Iterator<Chunk> listiter = list.iterator();
-		while(listiter.hasNext()) {
-			Chunk chunk = listiter.next();
-			System.out.println(chunk);
-			System.out.println(chunk.getId());
-			System.out.println(chunk.getMetadata());
-			System.out.println(chunk.getEmbedding());
-			System.out.println(chunk.getContent());
-		}
+		this.createSchema();
 
 	}
 
