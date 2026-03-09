@@ -12,7 +12,6 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Collection;
-import java.util.Iterator;
 
 import org.springframework.ai.embedding.EmbeddingModel;
 import org.springframework.ai.vectorstore.VectorStore;
@@ -26,8 +25,8 @@ import io.labber.kbadm.model.Chunk;
 import io.labber.kbadm.model.Document;
 import io.labber.kbadm.model.DocumentChunk;
 import io.labber.kbadm.model.rowmapper.ChunkRowMapper;
-import io.labber.kbadm.model.rowmapper.DocumentRowMapper;
 import io.labber.kbadm.model.rowmapper.DocumentChunkRowMapper;
+import io.labber.kbadm.model.rowmapper.DocumentRowMapper;
 
 /**
  * 
@@ -364,40 +363,72 @@ public class PgVectorStoreDriverImpl extends Driver {
 	 * 
 	 * @param document
 	 * @return
-	 * @throws SQLException
+	 * @throws KBException
 	 */
-	protected Collection<Document> getDocuments(String document) throws SQLException {
-		return this.runDocumentStatement("SELECT * FROM document_store WHERE name = '" + document.replace("'", "''") + "';");
+	public Collection<Document> getDocuments(
+		String document
+	) throws KBException {
+		try {
+			return this.runDocumentStatement(
+				"SELECT * FROM document_store WHERE name = '" + document.replace("'", "''") + "';"
+			);
+		} catch( SQLException e ) {
+			throw new KBException(e);
+		}
 	}
 
 	/**
 	 * 
 	 * @param document
 	 * @return
-	 * @throws SQLException
+	 * @throws KBException
 	 */
-	protected Collection<Chunk> getChunks(String document) throws SQLException {
-		return this.runChunkStatement("SELECT * FROM vector_store WHERE metadata->>'source' = '" + document.replace("'", "''") + "';");
+	public Collection<Chunk> getChunks(
+		String document
+	) throws KBException {
+		try {
+			return this.runChunkStatement(
+				"SELECT * FROM vector_store WHERE metadata->>'source' = '" + document.replace("'", "''") + "';"
+			);
+		} catch( SQLException e ) {
+			throw new KBException(e);
+		}
 	}
 
 	/**
 	 * 
 	 * @param document
 	 * @return
-	 * @throws SQLException
+	 * @throws KBException
 	 */
-	protected Collection<Chunk> getChunks(Document document) throws SQLException {
-		return this.runChunkStatement("SELECT * FROM vector_store WHERE metadata->>'parent_document_id' = '" + document.getId().replace("'", "''") + "';");
+	public Collection<Chunk> getChunks(
+		Document document
+	) throws KBException {
+		try {
+			return this.runChunkStatement(
+				"SELECT * FROM vector_store WHERE metadata->>'parent_document_id' = '" + document.getId().replace("'", "''") + "';"
+			);
+		} catch( SQLException e ) {
+			throw new KBException(e);
+		}
 	}
 
 	/**
 	 * 
 	 * @param document
 	 * @return
-	 * @throws SQLException
+	 * @throws KBException
 	 */
-	protected Collection<DocumentChunk> getDocumentChunks(Document document) throws SQLException {
-		return this.runDocumentChunkStatement("SELECT * FROM document_chunk WHERE document_id = '" + document.getId().replace("'", "''") + "';");
+	public Collection<DocumentChunk> getDocumentChunks(
+		Document document
+	) throws KBException {
+		try {
+			return this.runDocumentChunkStatement(
+				"SELECT * FROM document_chunk WHERE document_id = '" + document.getId().replace("'", "''") + "';"
+			);
+		} catch( SQLException e ) {
+			throw new KBException(e);
+		}
 	}
 
 	/**
@@ -430,6 +461,31 @@ public class PgVectorStoreDriverImpl extends Driver {
 		).removeExistingVectorStoreTable(
 			this.config.isRemoveExistingVectorStoreTable() // false
 		).build(); 
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public VectorStore vectorStore() {
+		return this.vectorStore(
+			jdbcTemplate, 
+			null
+		);
+	}
+
+	/**
+	 * 
+	 * @param embeddingModel
+	 * @return
+	 */
+	public VectorStore vectorStore(
+		EmbeddingModel embeddingModel
+	) {
+		return this.vectorStore(
+			jdbcTemplate, 
+			embeddingModel
+		);
 	}
 
 }
