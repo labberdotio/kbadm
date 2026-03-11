@@ -90,6 +90,35 @@ public class ConfigTest {
 
 		System.out.println(config);
 		System.out.println(config.getEndpoints());
+		System.out.println(config.getDatasources());
+		System.out.println(config.getTextsplitters());
+		System.out.println(config.getVectorstores());
+		System.out.println(config.getKnowledgebases());
+
+		for( EndpointConfig endpoint : config.getEndpoints() ) {
+			System.out.println(endpoint);
+			System.out.println(endpoint.getConfig());
+		}
+
+		for( DatasourceConfig datasource : config.getDatasources() ) {
+			System.out.println(datasource);
+			System.out.println(datasource.getConfig());
+		}
+
+		for( TextsplitterConfig textsplitter : config.getTextsplitters() ) {
+			System.out.println(textsplitter);
+			System.out.println(textsplitter.getConfig());
+		}
+
+		for( VectorstoreConfig vectorstore : config.getVectorstores() ) {
+			System.out.println(vectorstore);
+			System.out.println(vectorstore.getConfig());
+		}
+
+		for( KnowledgebaseConfig knowledgebase : config.getKnowledgebases() ) {
+			System.out.println(knowledgebase);
+			System.out.println(knowledgebase.getConfig());
+		}
 
 	}
 

@@ -1,13 +1,15 @@
 package io.labber.kbadm.config;
 
+import java.util.ArrayList;
 import java.util.Collection;
 
 public class Config {
 
-	private Collection<EndpointConfig> endpoints;
-	private Collection<DatasourceConfig> datasources;
-	private Collection<VectorstoreConfig> vectorstores;
-	private Collection<KnowledgebaseConfig> knowledgebases;
+	private Collection<EndpointConfig> endpoints = new ArrayList<EndpointConfig>();
+	private Collection<DatasourceConfig> datasources = new ArrayList<DatasourceConfig>();
+	private Collection<TextsplitterConfig> textsplitters = new ArrayList<TextsplitterConfig>();
+	private Collection<VectorstoreConfig> vectorstores = new ArrayList<VectorstoreConfig>();
+	private Collection<KnowledgebaseConfig> knowledgebases = new ArrayList<KnowledgebaseConfig>();
 
 	/**
 	 * 
@@ -39,6 +41,22 @@ public class Config {
 	 */
 	public void setDatasources(Collection<DatasourceConfig> datasources) {
 		this.datasources = datasources;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public Collection<TextsplitterConfig> getTextsplitters() {
+		return textsplitters;
+	}
+
+	/**
+	 * 
+	 * @param textsplitters
+	 */
+	public void setTextsplitters(Collection<TextsplitterConfig> textsplitters) {
+		this.textsplitters = textsplitters;
 	}
 
 	/**
