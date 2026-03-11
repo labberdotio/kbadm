@@ -32,6 +32,9 @@ public class PgVectorStoreConfigLoader {
 	VectorstoreConfig vectorstore;
 	KnowledgebaseConfig knowledgebase;
 
+	DataSource dataSource = null;
+	JdbcTemplate jdbcTemplate =  null;
+
 	/**
 	 * 
 	 * @param kb
@@ -115,6 +118,15 @@ public class PgVectorStoreConfigLoader {
 			}
 		}
 
+		DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
+		dataSourceBuilder.driverClassName(this.datasource.getConfig().get("driver").toString());
+		dataSourceBuilder.url(this.datasource.getConfig().get("url").toString());
+		dataSourceBuilder.username(this.datasource.getConfig().get("username").toString());
+		dataSourceBuilder.password(this.datasource.getConfig().get("password").toString());
+
+		this.dataSource = dataSourceBuilder.build();
+		this.jdbcTemplate =  new JdbcTemplate(this.dataSource);
+
 	}
 
 	/**
@@ -134,12 +146,23 @@ public class PgVectorStoreConfigLoader {
 		VectorstoreConfig vectorstore, 
 		KnowledgebaseConfig knowledgebase
 	) {
+
 		this.kb = kb;
 		this.endpoint = endpoint;
 		this.datasource = datasource;
 		this.textsplitter = textsplitter;
 		this.vectorstore = vectorstore;
 		this.knowledgebase = knowledgebase;
+
+		DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
+		dataSourceBuilder.driverClassName(this.datasource.getConfig().get("driver").toString());
+		dataSourceBuilder.url(this.datasource.getConfig().get("url").toString());
+		dataSourceBuilder.username(this.datasource.getConfig().get("username").toString());
+		dataSourceBuilder.password(this.datasource.getConfig().get("password").toString());
+
+		this.dataSource = dataSourceBuilder.build();
+		this.jdbcTemplate =  new JdbcTemplate(this.dataSource);
+
 	}
 
 	/**
@@ -252,13 +275,14 @@ public class PgVectorStoreConfigLoader {
 	 */
 	public DataSource dataSource() {
 
-		DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
-		dataSourceBuilder.driverClassName(this.datasource.getConfig().get("driver").toString());
-		dataSourceBuilder.url(this.datasource.getConfig().get("url").toString());
-		dataSourceBuilder.username(this.datasource.getConfig().get("username").toString());
-		dataSourceBuilder.password(this.datasource.getConfig().get("password").toString());
-
-		return dataSourceBuilder.build();
+//		DataSourceBuilder dataSourceBuilder = DataSourceBuilder.create();
+//		dataSourceBuilder.driverClassName(this.datasource.getConfig().get("driver").toString());
+//		dataSourceBuilder.url(this.datasource.getConfig().get("url").toString());
+//		dataSourceBuilder.username(this.datasource.getConfig().get("username").toString());
+//		dataSourceBuilder.password(this.datasource.getConfig().get("password").toString());
+//
+//		return dataSourceBuilder.build();
+		return this.dataSource;
 	}
 
 	/**
@@ -266,7 +290,8 @@ public class PgVectorStoreConfigLoader {
 	 * @return
 	 */
 	public JdbcTemplate jdbcTemplate() {
-		return new JdbcTemplate(this.dataSource());
+//		return new JdbcTemplate(this.dataSource());
+		return this.jdbcTemplate;
 	}
 
 	/**
