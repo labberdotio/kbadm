@@ -5,7 +5,9 @@ import java.util.Map;
 public class KnowledgebaseConfig {
 
 	private String name;
+	private String endpoint;
 	private String vectorstore;
+	private String textsplitter;
 
 	private Map<String, Object> config;
 
@@ -29,6 +31,22 @@ public class KnowledgebaseConfig {
 	 * 
 	 * @return
 	 */
+	public String getEndpoint() {
+		return endpoint;
+	}
+
+	/**
+	 * 
+	 * @param endpoint
+	 */
+	public void setEndpoint(String endpoint) {
+		this.endpoint = endpoint;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
 	public String getVectorstore() {
 		return vectorstore;
 	}
@@ -39,6 +57,22 @@ public class KnowledgebaseConfig {
 	 */
 	public void setVectorstore(String vectorstore) {
 		this.vectorstore = vectorstore;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getTextsplitter() {
+		return textsplitter;
+	}
+
+	/**
+	 * 
+	 * @param textsplitter
+	 */
+	public void setTextsplitter(String textsplitter) {
+		this.textsplitter = textsplitter;
 	}
 
 	/**

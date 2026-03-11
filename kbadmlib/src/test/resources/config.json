@@ -63,33 +63,33 @@
 	}], 
 	"knowledgebases": [{
 		"name": "kbzero", 
+		"endpoint": "ollama", 
 		"vectorstore": "kbzero", 
+		"textsplitter": "splitter", 
 		"config": {
 			"endpoint": "ollama", 
 			"model": "gpt-oss", 
-			"embedModel": "nomic-embed-text", 
-			"textsplitter": "splitter", 
-			"vectorstore": "kbzero"
+			"embeddingModel": "nomic-embed-text"
 		}
 	}, {
 		"name": "kbone", 
+		"endpoint": "ollama", 
 		"vectorstore": "kbone", 
+		"textsplitter": "splitter", 
 		"config": {
 			"endpoint": "ollama", 
 			"model": "gpt-oss", 
-			"embedModel": "nomic-embed-text", 
-			"textsplitter": "splitter", 
-			"vectorstore": "kbone"
+			"embeddingModel": "nomic-embed-text"
 		}
 	}, {
 		"name": "kbtwo", 
+		"endpoint": "ollama", 
 		"vectorstore": "kbtwo", 
+		"textsplitter": "splitter", 
 		"config": {
 			"endpoint": "ollama", 
 			"model": "gpt-oss", 
-			"embedModel": "nomic-embed-text", 
-			"textsplitter": "splitter", 
-			"vectorstore": "kbtwo"
+			"embeddingModel": "nomic-embed-text"
 		}
 	}]
 }
