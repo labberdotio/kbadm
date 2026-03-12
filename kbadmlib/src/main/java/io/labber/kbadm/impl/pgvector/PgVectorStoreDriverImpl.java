@@ -13,9 +13,13 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.Collection;
 
-import org.springframework.ai.embedding.EmbeddingModel;
+import javax.sql.DataSource;
+
+import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.ai.vectorstore.pgvector.PgVectorStore;
+import org.springframework.ai.vectorstore.pgvector.PgVectorStore.PgDistanceType;
+import org.springframework.ai.vectorstore.pgvector.PgVectorStore.PgIndexType;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 
@@ -39,15 +43,26 @@ public class PgVectorStoreDriverImpl extends Driver {
 	private PgVectorStoreConfigImpl config;
 	private PgVectorStoreMetadataImpl metadata;
 
+	private DataSource dataSource = null;
 	private JdbcTemplate jdbcTemplate;
+
+	// private OllamaApi ollamaApi = null;
+	private ChatClient chatClient = null;
+	private VectorStore vectorStore = null;
+
+	// private EmbeddingModel embeddingModel = null;
 
 	/**
 	 * 
 	 * @param jdbcTemplate
+	 * @param chatClient
+	 * @param vectorStore
 	 * @param store
 	 */
 	public PgVectorStoreDriverImpl(
 		JdbcTemplate jdbcTemplate, 
+		ChatClient chatClient, 
+		VectorStore vectorStore, 
 		PgVectorStoreImpl store
 	) {
 		super(store);
@@ -55,6 +70,28 @@ public class PgVectorStoreDriverImpl extends Driver {
 		this.config = store.getConfig();
 		this.metadata = store.getMetadata();
 		this.jdbcTemplate = jdbcTemplate;
+		this.chatClient = chatClient;
+		this.vectorStore = vectorStore;
+	}
+
+	/**
+	 * 
+	 * @throws KBException
+	 */
+	public void init() throws KBException {
+
+		// 
+
+	}
+
+	/**
+	 * 
+	 * @throws KBException
+	 */
+	public void close() throws KBException {
+
+		// 
+
 	}
 
 //	public void init() throws KBException {
@@ -80,6 +117,30 @@ public class PgVectorStoreDriverImpl extends Driver {
 
 	/**
 	 * 
+	 * @return
+	 */
+	public JdbcTemplate jdbcTemplate() {
+		return this.jdbcTemplate;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public ChatClient chatClient() {
+		return this.chatClient;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public VectorStore vectorStore() {
+		return this.vectorStore;
+	}
+
+	/**
+	 * 
 	 * @throws KBException
 	 */
 	public void createSchema() throws KBException {
@@ -99,6 +160,36 @@ public class PgVectorStoreDriverImpl extends Driver {
 		this.dropTable(
 			"DROP TABLE IF EXISTS " + this.getStoreTableName() + ";"
 		);
+	}
+
+	/**
+	 * 
+	 */
+	public void initSchema() throws KBException {
+
+		this.jdbcTemplate().execute(String.format("CREATE SCHEMA IF NOT EXISTS %s", this.getSchemaName()));
+
+		// Remove existing VectorStoreTable
+		// if (this.removeExistingVectorStoreTable) {
+		// 	this.jdbcTemplate().execute(String.format("DROP TABLE IF EXISTS %s", this.getFullyQualifiedTableName(schema, table)));
+		// }
+
+		this.jdbcTemplate().execute(String.format("""
+				CREATE TABLE IF NOT EXISTS %s (
+					id %s PRIMARY KEY,
+					content text,
+					metadata json,
+					embedding vector(%d)
+				)
+				""", this.getFullyQualifiedTableName(), this.getColumnTypeName(), this.embeddingDimensions()));
+
+		// if (this.createIndexMethod != PgIndexType.NONE) {
+			this.jdbcTemplate().execute(String.format("""
+					CREATE INDEX IF NOT EXISTS %s ON %s USING %s (embedding %s)
+					""", this.getVectorIndexName(), this.getFullyQualifiedTableName(), this.createIndexMethod(),
+					this.getDistanceType().index));
+		// }
+
 	}
 
 	/**
@@ -159,6 +250,77 @@ public class PgVectorStoreDriverImpl extends Driver {
 		return this.getTableName(
 			this.config.getVectorTableName() // PgVectorStore.DEFAULT_TABLE_NAME // "vector_store"
 		);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getSchemaName() {
+		return this.config.getSchemaName();
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getVectorTableName() {
+		return this.getTableName(
+			this.config.getVectorTableName() // PgVectorStore.DEFAULT_TABLE_NAME // "vector_store"
+		);
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getFullyQualifiedTableName() {
+		return this.getSchemaName() + "." + this.getVectorTableName();
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getColumnTypeName() {
+		// TODO
+		// return this.config.getColumnTypeName();
+		return "uuid";
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public int embeddingDimensions() {
+		return this.config.getDimensions();
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public String getVectorIndexName() {
+		String vectorTableName = this.getVectorTableName();
+		String vectorIndexName = vectorTableName.equals(PgVectorStore.DEFAULT_TABLE_NAME) ? PgVectorStore.DEFAULT_VECTOR_INDEX_NAME
+			: vectorTableName + "_index";
+		return vectorIndexName;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public PgIndexType createIndexMethod() {
+		return this.config.getIndexType();
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public PgDistanceType getDistanceType() {
+		return this.config.getDistanceType();
 	}
 
 	/**
@@ -429,63 +591,6 @@ public class PgVectorStoreDriverImpl extends Driver {
 		} catch( SQLException e ) {
 			throw new KBException(e);
 		}
-	}
-
-	/**
-	 * 
-	 * @param jdbcTemplate
-	 * @param embeddingModel
-	 * @return
-	 */
-	protected VectorStore vectorStore(
-		JdbcTemplate jdbcTemplate, 
-		EmbeddingModel embeddingModel
-	) {
-		return PgVectorStore.builder(
-			jdbcTemplate, 
-			embeddingModel
-		).indexType(
-			this.config.getIndexType() // PgIndexType.HNSW
-		).distanceType(
-			this.config.getDistanceType() // PgDistanceType.COSINE_DISTANCE
-		).dimensions(
-			this.config.getDimensions() // 1024
-		).schemaName(
-			this.config.getSchemaName() // PgVectorStore.DEFAULT_SCHEMA_NAME
-		).vectorTableName(
-			this.getTableName(
-				this.config.getVectorTableName() // PgVectorStore.DEFAULT_TABLE_NAME // "vector_store"
-			)
-		).initializeSchema(
-			this.config.isInitializeSchema() // true
-		).removeExistingVectorStoreTable(
-			this.config.isRemoveExistingVectorStoreTable() // false
-		).build(); 
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public VectorStore vectorStore() {
-		return this.vectorStore(
-			jdbcTemplate, 
-			null
-		);
-	}
-
-	/**
-	 * 
-	 * @param embeddingModel
-	 * @return
-	 */
-	public VectorStore vectorStore(
-		EmbeddingModel embeddingModel
-	) {
-		return this.vectorStore(
-			jdbcTemplate, 
-			embeddingModel
-		);
 	}
 
 }

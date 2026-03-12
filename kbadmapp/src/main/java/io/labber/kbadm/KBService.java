@@ -53,7 +53,7 @@ public class KBService {
 	
 			// vectorStore.
 			// SearchRequest.builder().query(question.question()).build();
-			List<Document> relevantDocuments = loader.vectorStore().similaritySearch(
+			List<Document> relevantDocuments = loader.driver().vectorStore().similaritySearch(
 				SearchRequest.builder().query(question.question()).build()
 			); // .withTopK(5));
 			System.out.println(relevantDocuments);
@@ -97,8 +97,8 @@ public class KBService {
 				config
 			);
 
-			ChatResponse response = loader.chatClient().prompt()
-				.advisors(QuestionAnswerAdvisor.builder(loader.vectorStore()).build())
+			ChatResponse response = loader.driver().chatClient().prompt()
+				.advisors(QuestionAnswerAdvisor.builder(loader.driver().vectorStore()).build())
 				.user(question.question()).call().chatResponse();
 
 			if( response != null ) {
@@ -162,7 +162,7 @@ public class KBService {
 					// TokenTextSplitter textSplitter = new TokenTextSplitter();
 					List<Document> splitDocuments = textSplitter.apply(documents);
 
-					loader.vectorStore().add(splitDocuments);
+					loader.driver().vectorStore().add(splitDocuments);
 
 				}
 			}

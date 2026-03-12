@@ -45,6 +45,8 @@ public class PgVectorStoreConfigLoader {
 
 	EmbeddingModel embeddingModel = null;
 
+	PgVectorStoreDriverImpl driver = null;
+
 	/**
 	 * 
 	 * @param kb
@@ -143,7 +145,7 @@ public class PgVectorStoreConfigLoader {
 		).build();
 
 		OllamaChatModel chatModel = OllamaChatModel.builder().ollamaApi(
-			ollamaApi()
+			this.ollamaApi
 		).defaultOptions(
 			OllamaChatOptions.builder().model(
 				// endpoint.getConfig().get("model").toString()
@@ -156,7 +158,7 @@ public class PgVectorStoreConfigLoader {
 		).build();
 
 		this.embeddingModel = OllamaEmbeddingModel.builder().ollamaApi(
-			ollamaApi()
+			this.ollamaApi
 		).defaultOptions(
 			OllamaEmbeddingOptions.builder().model(
 				// endpoint.getConfig().get("embeddingModel").toString()
@@ -164,27 +166,34 @@ public class PgVectorStoreConfigLoader {
 			).build()
 		).build();
 
-		// this.createSchema(
-		this.initSchema();
+		// // this.createSchema(
+		// this.initSchema();
 
 		this.vectorStore = PgVectorStore.builder(
-			this.jdbcTemplate(), 
-			this.embeddingModel()
+			this.jdbcTemplate, 
+			this.embeddingModel
 		).indexType(
-			this.createIndexMethod()
+			this.indexType
 		).distanceType(
-			this.getDistanceType()
+			this.distanceType
 		).dimensions(
-			this.embeddingDimensions()
+			this.dimensions
 		).schemaName(
-			this.getSchemaName()
+			this.schemaName
 		).vectorTableName(
-			this.getVectorTableName()
+			this.vectorTableName
 		).initializeSchema(
 			false
 		).removeExistingVectorStoreTable(
 			false
 		).build();
+
+		this.driver = new PgVectorStoreDriverImpl(
+			jdbcTemplate, 
+			chatClient, 
+			vectorStore, 
+			null
+		);
 
 	}
 
@@ -210,147 +219,16 @@ public class PgVectorStoreConfigLoader {
 	 * 
 	 * @return
 	 */
-	public String getSchemaName() {
-		return this.schemaName;
+	public PgVectorStoreDriverImpl getDriver() {
+		return this.driver;
 	}
 
 	/**
 	 * 
 	 * @return
 	 */
-	public String getVectorTableName() {
-		return this.vectorTableName;
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public String getFullyQualifiedTableName() {
-		return this.getSchemaName() + "." + this.getVectorTableName();
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public String getColumnTypeName() {
-		return this.columnTypeName;
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public int embeddingDimensions() {
-		return this.dimensions;
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public String getVectorIndexName() {
-		String vectorTableName = this.getVectorTableName();
-		String vectorIndexName = vectorTableName.equals(PgVectorStore.DEFAULT_TABLE_NAME) ? PgVectorStore.DEFAULT_VECTOR_INDEX_NAME
-			: vectorTableName + "_index";
-		return vectorIndexName;
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public PgIndexType createIndexMethod() {
-		return this.indexType;
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public PgDistanceType getDistanceType() {
-		return this.distanceType;
-	}
-
-	/**
-	 * 
-	 */
-	public void initSchema(
-		
-	) {
-
-		this.jdbcTemplate().execute(String.format("CREATE SCHEMA IF NOT EXISTS %s", this.getSchemaName()));
-
-		// Remove existing VectorStoreTable
-		// if (this.removeExistingVectorStoreTable) {
-		// 	this.jdbcTemplate().execute(String.format("DROP TABLE IF EXISTS %s", this.getFullyQualifiedTableName(schema, table)));
-		// }
-
-		this.jdbcTemplate().execute(String.format("""
-				CREATE TABLE IF NOT EXISTS %s (
-					id %s PRIMARY KEY,
-					content text,
-					metadata json,
-					embedding vector(%d)
-				)
-				""", this.getFullyQualifiedTableName(), this.getColumnTypeName(), this.embeddingDimensions()));
-
-		// if (this.createIndexMethod != PgIndexType.NONE) {
-			this.jdbcTemplate().execute(String.format("""
-					CREATE INDEX IF NOT EXISTS %s ON %s USING %s (embedding %s)
-					""", this.getVectorIndexName(), this.getFullyQualifiedTableName(), this.createIndexMethod(),
-					this.getDistanceType().index));
-		// }
-
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public DataSource dataSource() {
-		return this.dataSource;
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public JdbcTemplate jdbcTemplate() {
-		return this.jdbcTemplate;
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public OllamaApi ollamaApi() {
-		return this.ollamaApi;
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public ChatClient chatClient() {
-		return this.chatClient;
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public EmbeddingModel embeddingModel() {
-		return this.embeddingModel;
-	}
-
-	/**
-	 * 
-	 * @return
-	 */
-	public VectorStore vectorStore() {
-		return this.vectorStore;
+	public PgVectorStoreDriverImpl driver() {
+		return this.driver;
 	}
 
 }

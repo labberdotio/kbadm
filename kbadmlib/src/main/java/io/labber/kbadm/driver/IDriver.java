@@ -98,8 +98,8 @@ public interface IDriver {
 	 * @return
 	 * @throws KBException
 	 */
-	public VectorStore vectorStore(
-		EmbeddingModel embeddingModel
-	) throws KBException;
+	// public VectorStore vectorStore(
+	// 	EmbeddingModel embeddingModel
+	// ) throws KBException;
 
 }
