@@ -91,4 +91,137 @@ public class Config {
 		this.knowledgebases = knowledgebases;
 	}
 
+	/**
+	 * 
+	 * @param kb
+	 * @return
+	 */
+	public KnowledgebaseConfig getKnowledgebaseConfig(
+		String kb
+	) {
+		Config config = this;
+		for( KnowledgebaseConfig knowledgebase : config.getKnowledgebases() ) {
+			if( knowledgebase != null ) {
+				if( knowledgebase.getName() != null ) {
+					if( knowledgebase.getName().equalsIgnoreCase(kb) ) {
+						return knowledgebase;
+					}
+				}
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * 
+	 * @param kb
+	 * @param knowledgebase
+	 * @return
+	 */
+	public EndpointConfig getEndpointConfig(
+		String kb, 
+		KnowledgebaseConfig knowledgebase
+	) {
+		Config config = this;
+		if( (knowledgebase != null) && 
+			(knowledgebase.getEndpoint() != null) ) {
+			for( EndpointConfig endpoint : config.getEndpoints() ) {
+				if( endpoint != null ) {
+					if( endpoint.getName() != null ) {
+						if( endpoint.getName().equalsIgnoreCase(
+							knowledgebase.getEndpoint()
+						) ) {
+							return endpoint;
+						}
+					}
+				}
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * 
+	 * @param kb
+	 * @param knowledgebase
+	 * @return
+	 */
+	public VectorstoreConfig getVectorstoreConfig(
+		String kb, 
+		KnowledgebaseConfig knowledgebase
+	) {
+		Config config = this;
+		if( (knowledgebase != null) && 
+			(knowledgebase.getVectorstore() != null) ) {
+			for( VectorstoreConfig vectorstore : config.getVectorstores() ) {
+				if( vectorstore != null ) {
+					if( vectorstore.getName() != null ) {
+						if( vectorstore.getName().equalsIgnoreCase(
+							knowledgebase.getVectorstore()
+						) ) {
+							return vectorstore;
+						}
+					}
+				}
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * 
+	 * @param kb
+	 * @param vectorstore
+	 * @return
+	 */
+	public DatasourceConfig getDatasourceConfig(
+		String kb, 
+		VectorstoreConfig vectorstore
+	) {
+		Config config = this;
+		if( (vectorstore != null) && 
+			(vectorstore.getDatasource() != null) ) {
+			for( DatasourceConfig datasource : config.getDatasources() ) {
+				if( datasource != null ) {
+					if( datasource.getName() != null ) {
+						if( datasource.getName().equalsIgnoreCase(
+							vectorstore.getDatasource()
+						) ) {
+							return datasource;
+						}
+					}
+				}
+			}
+		}
+		return null;
+	}
+
+	/**
+	 * 
+	 * @param kb
+	 * @param knowledgebase
+	 * @return
+	 */
+	public TextsplitterConfig getTextsplitterConfig(
+		String kb, 
+		KnowledgebaseConfig knowledgebase
+	) {
+		Config config = this;
+		if( (knowledgebase != null) && 
+			(knowledgebase.getTextsplitter() != null) ) {
+			for( TextsplitterConfig textsplitter : config.getTextsplitters() ) {
+				if( textsplitter != null ) {
+					if( textsplitter.getName() != null ) {
+						if( textsplitter.getName().equalsIgnoreCase(
+							knowledgebase.getTextsplitter()
+						) ) {
+							return textsplitter;
+						}
+					}
+				}
+			}
+		}
+		return null;
+	}
+
 }
