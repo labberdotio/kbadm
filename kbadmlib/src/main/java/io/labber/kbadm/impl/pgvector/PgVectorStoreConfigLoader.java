@@ -192,7 +192,10 @@ public class PgVectorStoreConfigLoader {
 			jdbcTemplate, 
 			chatClient, 
 			vectorStore, 
-			null
+			new PgVectorStoreImpl(
+				new PgVectorStoreConfigImpl(), 
+				new PgVectorStoreMetadataImpl()
+			)
 		);
 
 	}
