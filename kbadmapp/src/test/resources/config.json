@@ -20,25 +20,76 @@
 			"password": ""
 		}
 	}], 
+	"textsplitters": [{
+		"name": "splitter", 
+		"config": {
+			"defaultChunkSize": 800, 
+			"minimumChunkSize": 350, 
+			"minimumChunkLenght": 5, 
+			"maximumNumberChunks": 10000, 
+			"keepSeparator": true
+		}
+	}], 
 	"vectorstores": [{
-		"name": "postgres", 
+		"name": "postgres1", 
 		"datasource": "postgres", 
 		"config": {
 			"indexType": "HNSW", 
 			"distanceType": "COSINE_DISTANCE", 
-			"dimensions": 1024, 
-			"schemaName": "public", 
+			"dimensions": 768, 
+			"schemaName": "postgres1", 
+			"vectorTableName": "vector_store"
+		}
+	}, {
+		"name": "postgres2", 
+		"datasource": "postgres", 
+		"config": {
+			"indexType": "HNSW", 
+			"distanceType": "COSINE_DISTANCE", 
+			"dimensions": 768, 
+			"schemaName": "postgres2", 
+			"vectorTableName": "vector_store"
+		}
+	}, {
+		"name": "postgres3", 
+		"datasource": "postgres", 
+		"config": {
+			"indexType": "HNSW", 
+			"distanceType": "COSINE_DISTANCE", 
+			"dimensions": 768, 
+			"schemaName": "postgres3", 
 			"vectorTableName": "vector_store"
 		}
 	}], 
 	"knowledgebases": [{
-		"name": "postgres", 
-		"vectorstore": "postgres", 
+		"name": "postgres1", 
+		"vectorstore": "postgres1", 
 		"config": {
 			"endpoint": "ollama", 
-			"model": "nomic-embed-text", 
-			"schemaName": "public", 
-			"tablePrefix": ""
+			"model": "gpt-oss", 
+			"embedModel": "nomic-embed-text", 
+			"textsplitter": "splitter", 
+			"vectorstore": "postgres1"
+		}
+	}, {
+		"name": "postgres2", 
+		"vectorstore": "postgres2", 
+		"config": {
+			"endpoint": "ollama", 
+			"model": "gpt-oss", 
+			"embedModel": "nomic-embed-text", 
+			"textsplitter": "splitter", 
+			"vectorstore": "postgres2"
+		}
+	}, {
+		"name": "postgres3", 
+		"vectorstore": "postgres3", 
+		"config": {
+			"endpoint": "ollama", 
+			"model": "gpt-oss", 
+			"embedModel": "nomic-embed-text", 
+			"textsplitter": "splitter", 
+			"vectorstore": "postgres3"
 		}
 	}]
 }
