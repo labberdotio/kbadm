@@ -154,7 +154,8 @@ public class Neo4jStoreConfigLoader {
 
 		OllamaChatModel chatModel = OllamaChatModel.builder().ollamaApi(
 			this.ollamaApi
-		).defaultOptions(
+		// ).defaultOptions(
+		).options(
 			OllamaChatOptions.builder().model(
 				// endpoint.getConfig().get("model").toString()
 				knowledgebase.getConfig().get("model").toString()
@@ -167,7 +168,8 @@ public class Neo4jStoreConfigLoader {
 
 		this.embeddingModel = OllamaEmbeddingModel.builder().ollamaApi(
 			this.ollamaApi
-		).defaultOptions(
+		// ).defaultOptions(
+		).options(
 			OllamaEmbeddingOptions.builder().model(
 				// endpoint.getConfig().get("embeddingModel").toString()
 				knowledgebase.getConfig().get("embeddingModel").toString()
