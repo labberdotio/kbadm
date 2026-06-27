@@ -40,7 +40,8 @@ public class ChatService {
 
 		OllamaChatModel chatModel = OllamaChatModel.builder().ollamaApi(
 			ollamaApi
-		).defaultOptions(
+		// ).defaultOptions(
+		).options(
 			OllamaChatOptions.builder().model(
 				model
 			).enableThinking().build()
