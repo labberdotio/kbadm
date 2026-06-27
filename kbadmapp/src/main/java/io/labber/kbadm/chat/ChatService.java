@@ -8,7 +8,9 @@ package io.labber.kbadm.chat;
 
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.model.ChatResponse;
-import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ai.ollama.OllamaChatModel;
+import org.springframework.ai.ollama.api.OllamaApi;
+import org.springframework.ai.ollama.api.OllamaChatOptions;
 import org.springframework.http.codec.ServerSentEvent;
 import org.springframework.stereotype.Component;
 
@@ -22,15 +24,42 @@ import reactor.core.publisher.Flux;
 @Component
 public class ChatService {
 
-	@Autowired
-	protected ChatClient chatClient;
+	/**
+	 * 
+	 * @param url
+	 * @param model
+	 * @return
+	 */
+	public ChatClient chatClient(
+		String url, String model
+	) {
+
+		OllamaApi ollamaApi = OllamaApi.builder().baseUrl(
+			url
+		).build();
+
+		OllamaChatModel chatModel = OllamaChatModel.builder().ollamaApi(
+			ollamaApi
+		).defaultOptions(
+			OllamaChatOptions.builder().model(
+				model
+			).enableThinking().build()
+		).build();
+
+		ChatClient chatClient = ChatClient.builder(
+			chatModel
+		).build();
+
+		return chatClient;
+	}
 
 	/**
 	 * 
+	 * @param delta
 	 * @return
 	 */
-	public ChatClient chatClient() {
-		return chatClient;
+	public ChatChunkResponse map(String delta) {
+		return new ChatChunkResponse(delta);
 	}
 
 	/**
@@ -38,12 +67,8 @@ public class ChatService {
 	 * @param response
 	 * @return
 	 */
-	public ChatChunkResponse map(
-		ChatResponse response
-	) {
-		return new ChatChunkResponse(
-			response.getResult().getOutput().getText()
-		);
+	public ChatChunkResponse map(ChatResponse response) {
+		return new ChatChunkResponse(response.getResult().getOutput().getText());
 	}
 
 	/**
@@ -54,7 +79,11 @@ public class ChatService {
 	public Flux<ServerSentEvent<ChatChunkResponse>> chat(
 		String prompt
 	) {
-		return chatClient.prompt()
+		// return chatClient.prompt()
+		return this.chatClient(
+			"http://10.88.88.180:11434", 
+			"gpt-oss"
+		).prompt()
 			.user(userMessage -> userMessage.text(prompt))
 			.stream()
 			.chatResponse()
