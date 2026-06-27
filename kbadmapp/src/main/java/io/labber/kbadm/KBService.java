@@ -159,11 +159,12 @@ public class KBService {
 					List<Document> documents = documentReader.get();
 
 					TokenTextSplitter textSplitter = new TokenTextSplitter(
-						800, 
-						350, 
-						5, 
-						10000, 
+						// 800, 
+						// 350, 
+						// 5, 
+						// 10000, 
 						true
+						// TokenTextSplitter.DEFAULT_PUNCTUATION_MARKS
 					);
 
 					// TokenTextSplitter textSplitter = new TokenTextSplitter();
