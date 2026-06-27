@@ -20,11 +20,11 @@ import io.labber.kbadm.store.StoreConfig;
  */
 public class Neo4jStoreConfigImpl extends StoreConfig {
 
-	protected String databaseName = null;
+	protected String databaseName = "neo4j";
 
 	// protected String indexType = null;
 	protected String indexName = "custom-index";
-	protected String labelName = "custom-index";
+	protected String labelName = "Document";
 	protected String embeddingProperty = "embedding";
 	protected Neo4jDistanceType distanceType = Neo4jDistanceType.COSINE;
 
