@@ -58,20 +58,26 @@ public class PgVectorStoreDriverImpl extends Driver {
 	 * @param chatClient
 	 * @param vectorStore
 	 * @param store
+	 * @throws KBException
 	 */
 	public PgVectorStoreDriverImpl(
 		JdbcTemplate jdbcTemplate, 
 		ChatClient chatClient, 
 		VectorStore vectorStore, 
 		PgVectorStoreImpl store
-	) {
+	) throws KBException {
+
 		super(store);
+
 		this.store = store;
 		this.config = store.getConfig();
 		this.metadata = store.getMetadata();
 		this.jdbcTemplate = jdbcTemplate;
 		this.chatClient = chatClient;
 		this.vectorStore = vectorStore;
+
+		this.init();
+
 	}
 
 	/**
@@ -80,7 +86,8 @@ public class PgVectorStoreDriverImpl extends Driver {
 	 */
 	public void init() throws KBException {
 
-		// 
+		// this.createSchema(
+		this.initSchema();
 
 	}
 
@@ -199,7 +206,8 @@ public class PgVectorStoreDriverImpl extends Driver {
 	 */
 	protected String getTableName(String table) {
 		// TODO: Clean up to only generate valid PostgreSQL table names.
-		return this.config.getName().toLowerCase() + "_" + table;
+		// return this.config.getName().toLowerCase() + "_" + table;
+		return table;
 	}
 
 	/**

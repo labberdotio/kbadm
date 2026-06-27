@@ -25,7 +25,7 @@ public class PgVectorStoreConfigImpl extends StoreConfig {
 	protected PgIndexType indexType = PgIndexType.HNSW;
 	protected PgDistanceType distanceType = PgDistanceType.COSINE_DISTANCE;
 
-	protected int dimensions = 1024;
+	protected int dimensions = 768; // 1024;
 	protected String schemaName = PgVectorStore.DEFAULT_SCHEMA_NAME;
 	protected String vectorTableName = PgVectorStore.DEFAULT_TABLE_NAME; // "vector_store";
 
@@ -40,9 +40,9 @@ public class PgVectorStoreConfigImpl extends StoreConfig {
 		super(properties);
 		this.indexType = this.readIndexType(properties, PgIndexType.HNSW);
 		this.distanceType = this.readDistanceType(properties, PgDistanceType.COSINE_DISTANCE);
-		this.dimensions = this.readInteger("dimensions", properties, 1024);
+		this.dimensions = this.readInteger("dimensions", properties, 768); // 1024);
 		this.schemaName = this.readString("schemaName", properties, PgVectorStore.DEFAULT_SCHEMA_NAME);
-		this.vectorTableName = this.readString("schemaName", properties, PgVectorStore.DEFAULT_TABLE_NAME);
+		this.vectorTableName = this.readString("vectorTableName", properties, PgVectorStore.DEFAULT_TABLE_NAME);
 		this.initializeSchema = this.readBoolean("initializeSchema", properties, true);
 		this.recreateSchema = this.readBoolean("recreateSchema", properties, false);
 	}
@@ -55,9 +55,9 @@ public class PgVectorStoreConfigImpl extends StoreConfig {
 		super(properties);
 		this.indexType = this.readIndexType(this.readProperties(properties), PgIndexType.HNSW);
 		this.distanceType = this.readDistanceType(this.readProperties(properties), PgDistanceType.COSINE_DISTANCE);
-		this.dimensions = this.readInteger("dimensions", this.readProperties(properties), 1024);
+		this.dimensions = this.readInteger("dimensions", this.readProperties(properties), 768); // 1024);
 		this.schemaName = this.readString("schemaName", this.readProperties(properties), PgVectorStore.DEFAULT_SCHEMA_NAME);
-		this.vectorTableName = this.readString("schemaName", this.readProperties(properties), PgVectorStore.DEFAULT_TABLE_NAME);
+		this.vectorTableName = this.readString("vectorTableName", this.readProperties(properties), PgVectorStore.DEFAULT_TABLE_NAME);
 		this.initializeSchema = this.readBoolean("initializeSchema", this.readProperties(properties), true);
 		this.recreateSchema = this.readBoolean("recreateSchema", this.readProperties(properties), false);
 	}
@@ -69,7 +69,7 @@ public class PgVectorStoreConfigImpl extends StoreConfig {
 		super();
 		this.indexType = PgIndexType.HNSW;
 		this.distanceType = PgDistanceType.COSINE_DISTANCE;
-		this.dimensions = 1024;
+		this.dimensions = 768; // 1024;
 		this.schemaName = PgVectorStore.DEFAULT_SCHEMA_NAME;
 		this.vectorTableName = PgVectorStore.DEFAULT_TABLE_NAME;
 		this.initializeSchema = true;

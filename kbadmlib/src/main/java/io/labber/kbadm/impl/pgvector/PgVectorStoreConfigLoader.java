@@ -1,4 +1,13 @@
+
+// 
+// Copyright (c) 2026, John Grundback
+// All rights reserved.
+// 
+
 package io.labber.kbadm.impl.pgvector;
+
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.sql.DataSource;
 
@@ -16,6 +25,7 @@ import org.springframework.ai.vectorstore.pgvector.PgVectorStore.PgIndexType;
 import org.springframework.boot.jdbc.DataSourceBuilder;
 import org.springframework.jdbc.core.JdbcTemplate;
 
+import io.labber.kbadm.KBException;
 import io.labber.kbadm.config.Config;
 import io.labber.kbadm.config.DatasourceConfig;
 import io.labber.kbadm.config.EndpointConfig;
@@ -23,6 +33,11 @@ import io.labber.kbadm.config.KnowledgebaseConfig;
 import io.labber.kbadm.config.TextsplitterConfig;
 import io.labber.kbadm.config.VectorstoreConfig;
 
+/**
+ * 
+ * @author john
+ *
+ */
 public class PgVectorStoreConfigLoader {
 
 	String schemaName;
@@ -37,7 +52,7 @@ public class PgVectorStoreConfigLoader {
 	// String embeddingModel;
 
 	DataSource dataSource = null;
-	JdbcTemplate jdbcTemplate =  null;
+	JdbcTemplate jdbcTemplate = null;
 
 	OllamaApi ollamaApi = null;
 	ChatClient chatClient = null;
@@ -55,7 +70,7 @@ public class PgVectorStoreConfigLoader {
 	public PgVectorStoreConfigLoader(
 		String kb, 
 		Config config
-	) {
+	) throws KBException {
 
 		KnowledgebaseConfig knowledgebase = config.getKnowledgebaseConfig(kb);
 		EndpointConfig endpoint = config.getEndpointConfig(kb, knowledgebase);
@@ -90,7 +105,7 @@ public class PgVectorStoreConfigLoader {
 		TextsplitterConfig textsplitter, 
 		VectorstoreConfig vectorstore, 
 		KnowledgebaseConfig knowledgebase
-	) {
+	) throws KBException {
 		this.init(
 			kb, 
 			endpoint, 
@@ -117,7 +132,7 @@ public class PgVectorStoreConfigLoader {
 		TextsplitterConfig textsplitter, 
 		VectorstoreConfig vectorstore, 
 		KnowledgebaseConfig knowledgebase
-	) {
+	) throws KBException {
 
 		this.schemaName = vectorstore.getConfig().get("schemaName").toString();
 		this.vectorTableName = vectorstore.getConfig().get("vectorTableName").toString();
@@ -188,12 +203,21 @@ public class PgVectorStoreConfigLoader {
 			false
 		).build();
 
+		Map<String, Object> properties = new HashMap<String, Object>();
+		properties.put("name", "");
+
+		properties.put("dimensions", 768);
+		properties.put("schemaName", "kbtwo");
+		properties.put("vectorTableName", "vector_store");
+		properties.put("initializeSchema", false);
+		properties.put("recreateSchema", false);
+
 		this.driver = new PgVectorStoreDriverImpl(
 			jdbcTemplate, 
 			chatClient, 
 			vectorStore, 
 			new PgVectorStoreImpl(
-				new PgVectorStoreConfigImpl(), 
+				new PgVectorStoreConfigImpl(properties), 
 				new PgVectorStoreMetadataImpl()
 			)
 		);
@@ -203,7 +227,7 @@ public class PgVectorStoreConfigLoader {
 	/**
 	 * 
 	 */
-	public void close() {
+	public void close() throws KBException {
 
 		// this.jdbcTemplate.close();
 		this.jdbcTemplate = null;
