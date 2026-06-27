@@ -15,7 +15,8 @@ import org.springframework.stereotype.Service;
 
 import io.labber.kbadm.config.Config;
 import io.labber.kbadm.config.ConfigLoader;
-import io.labber.kbadm.impl.pgvector.PgVectorStoreConfigLoader;
+import io.labber.kbadm.impl.neo4j.Neo4jStoreConfigLoader;
+// import io.labber.kbadm.impl.pgvector.PgVectorStoreConfigLoader;
 
 @Service
 public class KBService {
@@ -40,13 +41,15 @@ public class KBService {
 	) throws Exception {
 
 		Config config = null;
-		PgVectorStoreConfigLoader loader = null;
+		// PgVectorStoreConfigLoader loader = null;
+		Neo4jStoreConfigLoader loader = null;
 
 		try {
 
 			config = configLoader.loadConfig();
 
-			loader = new PgVectorStoreConfigLoader(
+			// loader = new PgVectorStoreConfigLoader(
+			loader = new Neo4jStoreConfigLoader(
 				kb, 
 				config
 			);
@@ -86,13 +89,15 @@ public class KBService {
 	) throws Exception {
 
 		Config config = null;
-		PgVectorStoreConfigLoader loader = null;
+		// PgVectorStoreConfigLoader loader = null;
+		Neo4jStoreConfigLoader loader = null;
 
 		try {
 
 			config = configLoader.loadConfig();
 
-			loader = new PgVectorStoreConfigLoader(
+			// loader = new PgVectorStoreConfigLoader(
+			loader = new Neo4jStoreConfigLoader(
 				kb, 
 				config
 			);
@@ -128,13 +133,15 @@ public class KBService {
 	) throws Exception {
 
 		Config config = null;
-		PgVectorStoreConfigLoader loader = null;
+		// PgVectorStoreConfigLoader loader = null;
+		Neo4jStoreConfigLoader loader = null;
 
 		try {
 
 			config = configLoader.loadConfig();
 
-			loader = new PgVectorStoreConfigLoader(
+			// loader = new PgVectorStoreConfigLoader(
+			loader = new Neo4jStoreConfigLoader(
 				kb, 
 				config
 			);
