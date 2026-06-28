@@ -68,8 +68,17 @@ public class ChatService {
 	 * @param response
 	 * @return
 	 */
-	public ChatChunkResponse map(ChatResponse response) {
-		return new ChatChunkResponse(response.getResult().getOutput().getText());
+	public ChatTypeResponse map(ChatResponse response) {
+		if( response.getResult().getMetadata().containsKey("thinking")) {
+			return new ChatTypeResponse(
+				"reasoning", 
+				response.getResult().getOutput().getText()
+			);
+		}
+		return new ChatTypeResponse(
+			"text", 
+			response.getResult().getOutput().getText()
+		);
 	}
 
 	/**
@@ -77,7 +86,7 @@ public class ChatService {
 	 * @param prompt
 	 * @return
 	 */
-	public Flux<ServerSentEvent<ChatChunkResponse>> chat(
+	public Flux<ServerSentEvent<ChatTypeResponse>> chat(
 		String prompt
 	) {
 		// return chatClient.prompt()
@@ -93,7 +102,7 @@ public class ChatService {
 			// .filter(text -> text != null && !text.isEmpty())
 			// .filter(text -> !text.isEmpty())
 			// .map(text -> ServerSentEvent.<ChatChunkResponse>builder()
-			.map(response -> ServerSentEvent.<ChatChunkResponse>builder()
+			.map(response -> ServerSentEvent.<ChatTypeResponse>builder()
 				.id("message")
 				.event("content")
 				.data(this.map(response))

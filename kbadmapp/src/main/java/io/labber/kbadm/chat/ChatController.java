@@ -42,7 +42,7 @@ public class ChatController {
 	 * @return
 	 */
 	@PostMapping(value = "/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-	public Flux<ServerSentEvent<ChatChunkResponse>> chat(
+	public Flux<ServerSentEvent<ChatTypeResponse>> chat(
 		@RequestBody ChatRequest request
 	) {
 		return chatService.chat(request.getPrompt());
