@@ -10,6 +10,7 @@ import org.neo4j.driver.AuthTokens;
 import org.neo4j.driver.Driver;
 import org.neo4j.driver.GraphDatabase;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.client.advisor.vectorstore.QuestionAnswerAdvisor;
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.embedding.EmbeddingModel;
 import org.springframework.ai.embedding.TokenCountBatchingStrategy;
@@ -350,6 +351,12 @@ public class ChatService {
 			"http://10.88.88.180:11434", 
 			"gpt-oss"
 		).prompt()
+			.advisors(QuestionAnswerAdvisor.builder(
+				this.vectorStore(
+					"http://10.88.88.180:11434", 
+					"nomic-embed-text"
+				)
+			).build())
 			.user(userMessage -> userMessage.text(prompt))
 			.stream()
 			.chatResponse()
