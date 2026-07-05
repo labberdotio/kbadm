@@ -6,11 +6,21 @@
 
 package io.labber.kbadm.chat;
 
+import org.neo4j.driver.AuthTokens;
+import org.neo4j.driver.Driver;
+import org.neo4j.driver.GraphDatabase;
 import org.springframework.ai.chat.client.ChatClient;
 import org.springframework.ai.chat.model.ChatResponse;
+import org.springframework.ai.embedding.EmbeddingModel;
+import org.springframework.ai.embedding.TokenCountBatchingStrategy;
 import org.springframework.ai.ollama.OllamaChatModel;
+import org.springframework.ai.ollama.OllamaEmbeddingModel;
 import org.springframework.ai.ollama.api.OllamaApi;
 import org.springframework.ai.ollama.api.OllamaChatOptions;
+import org.springframework.ai.ollama.api.OllamaEmbeddingOptions;
+import org.springframework.ai.vectorstore.VectorStore;
+import org.springframework.ai.vectorstore.neo4j.Neo4jVectorStore;
+import org.springframework.ai.vectorstore.neo4j.Neo4jVectorStore.Neo4jDistanceType;
 import org.springframework.http.codec.ServerSentEvent;
 import org.springframework.stereotype.Component;
 
@@ -56,6 +66,69 @@ public class ChatService {
 		).build();
 
 		return chatClient;
+	}
+
+	/**
+	 * 
+	 * @param url
+	 * @param model
+	 * @return
+	 */
+	public VectorStore vectorStore (
+		String url, String model
+	) {
+
+		String databaseName = "neo4j";
+
+		// String indexType = null;
+		String indexName = "custom-index";
+		String labelName = "Document";
+		String embeddingProperty = "embedding";
+		Neo4jDistanceType distanceType = Neo4jDistanceType.COSINE;
+
+		int dimensions = 1536; // 1024;
+
+		OllamaApi ollamaApi = OllamaApi.builder().baseUrl(
+			url
+		).build();
+
+		// Driver neo4jDriver = GraphDatabase.driver("neo4j://10.88.88.194:7687",
+		Driver neo4jDriver = GraphDatabase.driver("neo4j://10.88.88.195:7687",
+			AuthTokens.basic("neo4j", "neo4j"));
+
+		EmbeddingModel embeddingModel = OllamaEmbeddingModel.builder().ollamaApi(
+			ollamaApi
+		// ).defaultOptions(
+		).options(
+			OllamaEmbeddingOptions.builder().model(
+				model
+			).build()
+		).build();
+
+		VectorStore vectorStore = Neo4jVectorStore.builder(
+			neo4jDriver, 
+			embeddingModel
+		)
+		// .databaseName(
+		// 	this.databaseName // this.config.getDatabaseName()
+		// )
+		.distanceType(
+			distanceType // this.config.getDistanceType()
+		).embeddingDimension(
+			dimensions // this.config.getDimensions()
+		).label(
+			labelName // this.config.getLabelName()
+		).embeddingProperty(
+			embeddingProperty // this.config.getEmbeddingProperty()
+		).indexName(
+			indexName // this.config.getIndexName()
+		).initializeSchema(
+			false // this.config.isInitializeSchema()
+		).batchingStrategy(
+			new TokenCountBatchingStrategy()
+		).build();
+
+		return vectorStore;
 	}
 
 	/**
