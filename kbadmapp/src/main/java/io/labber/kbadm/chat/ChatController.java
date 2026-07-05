@@ -8,6 +8,7 @@ package io.labber.kbadm.chat;
 
 import org.springframework.http.MediaType;
 import org.springframework.http.codec.ServerSentEvent;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -41,9 +42,29 @@ public class ChatController {
 	 * @param request
 	 * @return
 	 */
-	@PostMapping(value = "/stream", produces = MediaType.TEXT_EVENT_STREAM_VALUE)
-	public Flux<ServerSentEvent<ChatTypeResponse>> chat(
+	@PostMapping(
+		value = "/stream", 
+		consumes = MediaType.APPLICATION_JSON_VALUE, 
+		produces = MediaType.TEXT_EVENT_STREAM_VALUE
+	)
+	public Flux<ServerSentEvent<ChatTypeResponse>> jsonChat(
 		@RequestBody ChatRequest request
+	) {
+		return chatService.chat(request.getPrompt());
+	}
+
+	/**
+	 * 
+	 * @param request
+	 * @return
+	 */
+	@PostMapping(
+		value = "/stream", 
+		consumes = MediaType.APPLICATION_FORM_URLENCODED_VALUE, 
+		produces = MediaType.TEXT_EVENT_STREAM_VALUE
+	)
+	public Flux<ServerSentEvent<ChatTypeResponse>> formChat(
+		@ModelAttribute ChatRequest request
 	) {
 		return chatService.chat(request.getPrompt());
 	}
