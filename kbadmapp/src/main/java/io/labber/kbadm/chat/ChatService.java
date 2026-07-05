@@ -96,6 +96,24 @@ public class ChatService {
 	 */
 	public Flux<ServerSentEvent<ChatTypeResponse>> flatMap(ChatResponse response) {
 
+		if( this.started == false ) {
+			this.started = true;
+			return Flux.just(
+				ServerSentEvent.<ChatTypeResponse>builder()
+				.id("message")
+				.event("start")
+				.data(
+					new ChatTypeResponse(
+						"message", 
+						"text-1", 
+						"start", 
+						response.getResult().getOutput().getText()
+					)
+				)
+				.build()
+			);
+		}
+
 		if( response.getResult().getMetadata().containsKey("thinking")) {
 
 			if( this.thinking == false ) {
@@ -146,6 +164,42 @@ public class ChatService {
 				);
 			}
 
+		}
+
+		if( response.getMetadata().containsKey("done") ) {
+			if( Boolean.parseBoolean(
+				response.getMetadata().get("done").toString()
+			)) {
+				this.started = false;
+				this.thinking = false;
+				this.texting = false;
+				return Flux.just(
+					ServerSentEvent.<ChatTypeResponse>builder()
+						.id("message")
+						.event("text-end")
+						.data(
+							new ChatTypeResponse(
+								"message", 
+								"text-1", 
+								"text-end", 
+								response.getResult().getOutput().getText()
+							)
+						)
+						.build(), 
+					ServerSentEvent.<ChatTypeResponse>builder()
+						.id("message")
+						.event("finish")
+						.data(
+							new ChatTypeResponse(
+								"message", 
+								"text-1", 
+								"finish", 
+								response.getResult().getOutput().getText()
+							)
+						)
+						.build()
+				);
+			}
 		}
 
 		if( this.texting == false ) {
