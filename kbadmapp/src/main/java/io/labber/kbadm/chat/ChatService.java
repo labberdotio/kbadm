@@ -87,6 +87,48 @@ public class ChatService {
 
 	/**
 	 * 
+	 * @param response
+	 * @return
+	 */
+	public Flux<ServerSentEvent<ChatTypeResponse>> flatMap(ChatResponse response) {
+
+		if( response.getResult().getMetadata().containsKey("thinking")) {
+			return Flux.just(
+				ServerSentEvent.<ChatTypeResponse>builder()
+					.id("message")
+					.event("reasoning-delta")
+					.data(
+						new ChatTypeResponse(
+							"message", 
+							"reasoning-1", 
+							"reasoning-delta", 
+							// response.getResult().getOutput().getText()
+							response.getResult().getMetadata().get("thinking").toString()
+						)
+					)
+					.build()
+			);
+		}
+
+		return Flux.just(
+			ServerSentEvent.<ChatTypeResponse>builder()
+				.id("message")
+				.event("text-delta")
+				.data(
+					new ChatTypeResponse(
+						"message", 
+						"text-1", 
+						"text-delta", 
+						response.getResult().getOutput().getText()
+					)
+				)
+				.build()
+		);
+
+	}
+
+	/**
+	 * 
 	 * @param prompt
 	 * @return
 	 */
@@ -106,12 +148,13 @@ public class ChatService {
 			// .filter(text -> text != null && !text.isEmpty())
 			// .filter(text -> !text.isEmpty())
 			// .map(text -> ServerSentEvent.<ChatChunkResponse>builder()
-			.map(response -> ServerSentEvent.<ChatTypeResponse>builder()
-				.id("message")
-				.event("text-delta")
-				.data(this.map(response))
-				.build()
-			);
+			// .map(response -> ServerSentEvent.<ChatTypeResponse>builder()
+			// 	.id("message")
+			// 	.event("text-delta")
+			// 	.data(this.map(response))
+			// 	.build()
+			// );
+			.flatMap(response -> this.flatMap(response));
 			// .distinctUntilChanged();
 	}
 
