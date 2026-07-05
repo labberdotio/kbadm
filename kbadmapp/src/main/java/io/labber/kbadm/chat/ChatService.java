@@ -71,11 +71,15 @@ public class ChatService {
 	public ChatTypeResponse map(ChatResponse response) {
 		if( response.getResult().getMetadata().containsKey("thinking")) {
 			return new ChatTypeResponse(
+				"message", 
+				"reasoning-1", 
 				"reasoning", 
 				response.getResult().getOutput().getText()
 			);
 		}
 		return new ChatTypeResponse(
+			"message", 
+			"text-1", 
 			"text", 
 			response.getResult().getOutput().getText()
 		);
@@ -104,7 +108,7 @@ public class ChatService {
 			// .map(text -> ServerSentEvent.<ChatChunkResponse>builder()
 			.map(response -> ServerSentEvent.<ChatTypeResponse>builder()
 				.id("message")
-				.event("content")
+				.event("text-delta")
 				.data(this.map(response))
 				.build()
 			);
