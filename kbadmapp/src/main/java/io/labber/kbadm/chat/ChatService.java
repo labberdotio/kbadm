@@ -35,6 +35,8 @@ import reactor.core.publisher.Flux;
 @Component
 public class ChatService {
 
+	public static final int LOG_ADVISOR_ORDER = 100;
+
 	protected boolean started = false;
 	protected boolean thinking = false;
 	protected boolean texting = false;
@@ -351,12 +353,15 @@ public class ChatService {
 			"http://10.88.88.180:11434", 
 			"gpt-oss"
 		).prompt()
-			.advisors(QuestionAnswerAdvisor.builder(
-				this.vectorStore(
-					"http://10.88.88.180:11434", 
-					"nomic-embed-text"
-				)
-			).build())
+			.advisors(
+				QuestionAnswerAdvisor.builder(
+					this.vectorStore(
+						"http://10.88.88.180:11434", 
+						"nomic-embed-text"
+					)
+				).build(), 
+				new SimpleLoggerAdvisor().withOrder(LOG_ADVISOR_ORDER)
+			)
 			.user(userMessage -> userMessage.text(prompt))
 			.stream()
 			.chatResponse()
