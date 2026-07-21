@@ -441,6 +441,12 @@ public class ChatService {
 				new SuggestionGeneratingAdvisor2().withOrder(SUGG_ADVISOR_ORDER), 
 				new SimpleLoggerAdvisor().withOrder(LOG_ADVISOR_ORDER)
 			)
+			.advisors(
+				a -> a.param(
+					ChatMemory.CONVERSATION_ID, 
+					"conversation1"
+				)
+			)
 			.user(userMessage -> userMessage.text(prompt))
 			.stream()
 			.chatResponse()
