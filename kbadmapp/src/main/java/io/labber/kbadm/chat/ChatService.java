@@ -36,6 +36,7 @@ import reactor.core.publisher.Flux;
 public class ChatService {
 
 	public static final int RE2_ADVISOR_ORDER = 1;
+	public static final int SUGG_ADVISOR_ORDER = 99;
 	public static final int LOG_ADVISOR_ORDER = 100;
 
 	protected boolean started = false;
@@ -362,6 +363,7 @@ public class ChatService {
 					)
 				).build(), 
 				new ReReadingAdvisor().withOrder(RE2_ADVISOR_ORDER), 
+				new SuggestionGeneratingAdvisor2().withOrder(SUGG_ADVISOR_ORDER), 
 				new SimpleLoggerAdvisor().withOrder(LOG_ADVISOR_ORDER)
 			)
 			.user(userMessage -> userMessage.text(prompt))
