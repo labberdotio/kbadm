@@ -51,6 +51,7 @@ public class ChatService {
 	protected boolean texting = false;
 
 	protected ChatClient chatClient = null;
+	protected VectorStore vectorStore = null;
 
 	/**
 	 * 
@@ -97,6 +98,10 @@ public class ChatService {
 	public VectorStore vectorStore (
 		String url, String model
 	) {
+
+		if( this.vectorStore != null ) {
+			return this.vectorStore;
+		}
 
 		String databaseName = "neo4j";
 
@@ -147,6 +152,8 @@ public class ChatService {
 		).batchingStrategy(
 			new TokenCountBatchingStrategy()
 		).build();
+
+		this.vectorStore = vectorStore;
 
 		return vectorStore;
 	}
