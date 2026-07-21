@@ -35,6 +35,7 @@ import reactor.core.publisher.Flux;
 @Component
 public class ChatService {
 
+	public static final int RE2_ADVISOR_ORDER = 1;
 	public static final int LOG_ADVISOR_ORDER = 100;
 
 	protected boolean started = false;
@@ -360,6 +361,7 @@ public class ChatService {
 						"nomic-embed-text"
 					)
 				).build(), 
+				new ReReadingAdvisor().withOrder(RE2_ADVISOR_ORDER), 
 				new SimpleLoggerAdvisor().withOrder(LOG_ADVISOR_ORDER)
 			)
 			.user(userMessage -> userMessage.text(prompt))
