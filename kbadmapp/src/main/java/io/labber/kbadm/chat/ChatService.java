@@ -54,6 +54,7 @@ public class ChatService {
 	protected VectorStore vectorStore = null;
 
 	protected QuestionAnswerAdvisor vectorStoreAdvisor = null;
+	protected MessageChatMemoryAdvisor chatMemoryAdvisor = null;
 
 	/**
 	 * 
@@ -196,6 +197,10 @@ public class ChatService {
 		
 	) {
 
+		if( this.chatMemoryAdvisor != null ) {
+			return this.chatMemoryAdvisor;
+		}
+
 		// 
 		// ChatMemoryRepository chatMemoryRepository = new InMemoryChatMemoryRepository();
 		ChatMemoryRepository chatMemoryRepository = new ChatMemoryRepository();
@@ -211,6 +216,8 @@ public class ChatService {
 		)
 		.order(MEM_ADVISOR_ORDER)
 		.build();
+
+		this.chatMemoryAdvisor = chatMemoryAdvisor;
 
 		return chatMemoryAdvisor;
 	}
