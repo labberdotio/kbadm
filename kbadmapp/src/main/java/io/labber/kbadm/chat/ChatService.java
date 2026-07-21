@@ -10,7 +10,12 @@ import org.neo4j.driver.AuthTokens;
 import org.neo4j.driver.Driver;
 import org.neo4j.driver.GraphDatabase;
 import org.springframework.ai.chat.client.ChatClient;
+import org.springframework.ai.chat.client.advisor.MessageChatMemoryAdvisor;
 import org.springframework.ai.chat.client.advisor.vectorstore.QuestionAnswerAdvisor;
+import org.springframework.ai.chat.memory.ChatMemory;
+// import org.springframework.ai.chat.memory.ChatMemoryRepository;
+// import org.springframework.ai.chat.memory.InMemoryChatMemoryRepository;
+import org.springframework.ai.chat.memory.MessageWindowChatMemory;
 import org.springframework.ai.chat.model.ChatResponse;
 import org.springframework.ai.embedding.EmbeddingModel;
 import org.springframework.ai.embedding.TokenCountBatchingStrategy;
@@ -36,6 +41,7 @@ import reactor.core.publisher.Flux;
 public class ChatService {
 
 	public static final int RE2_ADVISOR_ORDER = 1;
+	public static final int MEM_ADVISOR_ORDER = 2;
 	public static final int KB_ADVISOR_ORDER = 3;
 	public static final int SUGG_ADVISOR_ORDER = 99;
 	public static final int LOG_ADVISOR_ORDER = 100;
@@ -157,6 +163,33 @@ public class ChatService {
 		.build();
 
 		return vectorStoreAdvisor;
+	}
+
+	/**
+	 * 
+	 * @return
+	 */
+	public MessageChatMemoryAdvisor chatMemoryAdvisor(
+		
+	) {
+
+		// 
+		// ChatMemoryRepository chatMemoryRepository = new InMemoryChatMemoryRepository();
+		ChatMemoryRepository chatMemoryRepository = new ChatMemoryRepository();
+
+		// 
+		ChatMemory chatMemory = MessageWindowChatMemory.builder()
+			.chatMemoryRepository(chatMemoryRepository)
+			.maxMessages(20)
+			.build();
+
+		MessageChatMemoryAdvisor chatMemoryAdvisor = MessageChatMemoryAdvisor.builder(
+			chatMemory
+		)
+		.order(MEM_ADVISOR_ORDER)
+		.build();
+
+		return chatMemoryAdvisor;
 	}
 
 	/**
@@ -373,6 +406,17 @@ public class ChatService {
 	public Flux<ServerSentEvent<ChatTypeResponse>> chat(
 		String prompt
 	) {
+
+		// // 
+		// // ChatMemoryRepository chatMemoryRepository = new InMemoryChatMemoryRepository();
+		// ChatMemoryRepository chatMemoryRepository = new ChatMemoryRepository();
+
+		// // 
+		// ChatMemory chatMemory = MessageWindowChatMemory.builder()
+		// 	.chatMemoryRepository(chatMemoryRepository)
+		// 	.maxMessages(20)
+		// 	.build();
+
 		// return chatClient.prompt()
 		return this.chatClient(
 			"http://10.88.88.180:11434", 
@@ -389,6 +433,10 @@ public class ChatService {
 					"http://10.88.88.180:11434", 
 					"nomic-embed-text"
 				), 
+				// MessageChatMemoryAdvisor.builder(
+				// 	chatMemory
+				// ) .build(), 
+				this.chatMemoryAdvisor(), 
 				new ReReadingAdvisor().withOrder(RE2_ADVISOR_ORDER), 
 				new SuggestionGeneratingAdvisor2().withOrder(SUGG_ADVISOR_ORDER), 
 				new SimpleLoggerAdvisor().withOrder(LOG_ADVISOR_ORDER)
