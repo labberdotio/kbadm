@@ -53,6 +53,8 @@ public class ChatService {
 	protected ChatClient chatClient = null;
 	protected VectorStore vectorStore = null;
 
+	protected QuestionAnswerAdvisor vectorStoreAdvisor = null;
+
 	/**
 	 * 
 	 * @param url
@@ -168,6 +170,10 @@ public class ChatService {
 		String url, String model
 	) {
 
+		if( this.vectorStoreAdvisor != null ) {
+			return this.vectorStoreAdvisor;
+		}
+
 		QuestionAnswerAdvisor vectorStoreAdvisor = QuestionAnswerAdvisor.builder(
 			this.vectorStore(
 				url, 
@@ -176,6 +182,8 @@ public class ChatService {
 		)
 		.order(KB_ADVISOR_ORDER)
 		.build();
+
+		this.vectorStoreAdvisor = vectorStoreAdvisor;
 
 		return vectorStoreAdvisor;
 	}
