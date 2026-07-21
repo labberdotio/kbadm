@@ -36,6 +36,7 @@ import reactor.core.publisher.Flux;
 public class ChatService {
 
 	public static final int RE2_ADVISOR_ORDER = 1;
+	public static final int KB_ADVISOR_ORDER = 3;
 	public static final int SUGG_ADVISOR_ORDER = 99;
 	public static final int LOG_ADVISOR_ORDER = 100;
 
@@ -134,6 +135,28 @@ public class ChatService {
 		).build();
 
 		return vectorStore;
+	}
+
+	/**
+	 * 
+	 * @param url
+	 * @param model
+	 * @return
+	 */
+	public QuestionAnswerAdvisor vectorStoreAdvisor(
+		String url, String model
+	) {
+
+		QuestionAnswerAdvisor vectorStoreAdvisor = QuestionAnswerAdvisor.builder(
+			this.vectorStore(
+				url, 
+				model
+			)
+		)
+		.order(KB_ADVISOR_ORDER)
+		.build();
+
+		return vectorStoreAdvisor;
 	}
 
 	/**
@@ -356,12 +379,16 @@ public class ChatService {
 			"gpt-oss"
 		).prompt()
 			.advisors(
-				QuestionAnswerAdvisor.builder(
-					this.vectorStore(
-						"http://10.88.88.180:11434", 
-						"nomic-embed-text"
-					)
-				).build(), 
+				// QuestionAnswerAdvisor.builder(
+				// 	this.vectorStore(
+				// 		"http://10.88.88.180:11434", 
+				// 		"nomic-embed-text"
+				// 	)
+				// ).build(), 
+				this.vectorStoreAdvisor(
+					"http://10.88.88.180:11434", 
+					"nomic-embed-text"
+				), 
 				new ReReadingAdvisor().withOrder(RE2_ADVISOR_ORDER), 
 				new SuggestionGeneratingAdvisor2().withOrder(SUGG_ADVISOR_ORDER), 
 				new SimpleLoggerAdvisor().withOrder(LOG_ADVISOR_ORDER)
