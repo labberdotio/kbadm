@@ -50,6 +50,8 @@ public class ChatService {
 	protected boolean thinking = false;
 	protected boolean texting = false;
 
+	protected ChatClient chatClient = null;
+
 	/**
 	 * 
 	 * @param url
@@ -59,6 +61,10 @@ public class ChatService {
 	public ChatClient chatClient(
 		String url, String model
 	) {
+
+		if( this.chatClient != null ) {
+			return this.chatClient;
+		}
 
 		OllamaApi ollamaApi = OllamaApi.builder().baseUrl(
 			url
@@ -76,6 +82,8 @@ public class ChatService {
 		ChatClient chatClient = ChatClient.builder(
 			chatModel
 		).build();
+
+		this.chatClient = chatClient;
 
 		return chatClient;
 	}
