@@ -1,0 +1,1064 @@
+commit dbca1ffa1a065b794ab9085cbc65e53df7c83c6b
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Tue Jul 21 09:28:35 2026 +0200
+
+    Test script.
+    
+    -rwxr-xr-x  1 john  staff  1015 juni 29 11:10:42 2026 testkb.sh
+
+commit e5ac36cc091e3520081b7354db659965d116557c
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Tue Jul 21 09:26:15 2026 +0200
+
+    Keep refs
+
+commit d1c4c86f461f36b3639fe7f688085319d7d03f4c
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Tue Jul 21 09:25:40 2026 +0200
+
+    Keep refs
+
+commit e443bba9187f0341467fd2443aea8577b490564e
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Tue Jul 21 09:24:57 2026 +0200
+
+    Keep refs
+
+commit 439290dd8b21fb35ae1ba63797d8d3d05bdbda93
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Tue Jul 21 09:23:55 2026 +0200
+
+    Keep refs
+
+commit 290de4229a4c8de283ac251ebb78fe68f957ed8c
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Tue Jul 21 09:22:08 2026 +0200
+
+    Additional Advisors.
+
+commit 632a09d1715238fb26bf7fd0c9fa5acdab3d1207
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Tue Jul 21 09:21:22 2026 +0200
+
+    Additional Advisors.
+
+commit ab49d5b23ccd9a9e010d91c3e689ebc196206db5
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Tue Jul 21 09:18:30 2026 +0200
+
+    Additional Advisors.
+
+commit ae5b241f40e05b97c533fe83d679706f7933e94a
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Tue Jul 21 09:15:34 2026 +0200
+
+    Additional Advisors.
+
+commit fe66b4b5d98d39208f8e65a43169c880cd21b728
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Tue Jul 21 09:14:35 2026 +0200
+
+    Additional Advisors.
+
+commit 24310ee21597f0b3bb902ab71fab1d8915fd9f52
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Tue Jul 21 09:13:43 2026 +0200
+
+    Additional Advisors.
+
+commit def359128fa8f6aa0a82cc9c4d1398c2b3186ae9
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Tue Jul 21 09:07:23 2026 +0200
+
+    Vector Store.
+    
+    -rw-r--r--@ 1 john  staff  17490 juli  7 22:28:56 2026 kbadmapp/src/main/java/io/labber/kbadm/chat/Neo4jVectorStore.java
+
+commit 602d9a705669a44510bb082a3ab5f1e1f81b4723
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Tue Jul 21 09:06:35 2026 +0200
+
+    Chat memory.
+    
+    -rw-r--r--@ 1 john  staff  1412 juli  6 20:25:15 2026 kbadmapp/src/main/java/io/labber/kbadm/chat/ChatMemoryRepository.java
+
+commit 3f49124199916f1bbc99e46b00e4dceaa933499f
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Tue Jul 21 09:05:28 2026 +0200
+
+    Advisors.
+    
+    -rw-r--r--@  1 john  staff   1557 juli  6 23:21:11 2026 ReReadingAdvisor.java
+    -rw-r--r--@  1 john  staff   2068 juli  6 23:40:26 2026 SimpleLoggerAdvisor.java
+    -rw-r--r--@  1 john  staff   2468 juli  6 23:26:49 2026 SuggestionGeneratingAdvisor.java
+    -rw-r--r--@  1 john  staff   1686 juli  6 23:35:39 2026 SuggestionGeneratingAdvisor2.java
+
+commit 3b3e97056d3f8aff659beeacc4fbdd6a7bf12c12
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sun Jul 5 12:19:55 2026 +0200
+
+    Integrating the Spring AI streaming chat service with a Neo4j Vector KB.
+    
+    Integrating the Spring AI streaming chat service with a Neo4j Vector KB.
+
+commit 0c3154d0b1d47f52da85b5933afd6f5cff357da4
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sun Jul 5 12:18:44 2026 +0200
+
+    Upgrading Spring AI to 2.0.0.
+    
+    Upgrading Spring AI to 2.0.0.
+
+commit 1b4dcf6f23b1de6211fbab1a61267434f54ed44f
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sun Jul 5 12:17:59 2026 +0200
+
+    Integrating the Spring AI streaming chat service with a Neo4j Vector KB.
+    
+    Integrating the Spring AI streaming chat service with a Neo4j Vector KB.
+
+commit 2ef061014d9a938e732b531af98616737dc828fb
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sun Jul 5 12:16:18 2026 +0200
+
+    Integrating the Spring AI streaming chat service with a Neo4j Vector KB.
+    
+    Integrating the Spring AI streaming chat service with a Neo4j Vector KB.
+
+commit a095341295f80f12106fac8672129dd62b637d39
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sun Jul 5 12:13:55 2026 +0200
+
+    Making the Spring AI streaming chat service compatible with MUI X Chat.
+    
+    Making the Spring AI streaming chat service compatible with the MUI X
+    Chat ChatBox Adapter.
+
+commit 8373df5af7834c285485cdcb1de42804cb1f094a
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sun Jul 5 12:13:03 2026 +0200
+
+    Making the Spring AI streaming chat service compatible with MUI X Chat.
+    
+    Making the Spring AI streaming chat service compatible with the MUI X
+    Chat ChatBox Adapter.
+
+commit 64524b57c8ff9c3f697d7b599d6a50c991344f58
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sun Jul 5 12:11:12 2026 +0200
+
+    Making the Spring AI streaming chat service compatible with MUI X Chat.
+    
+    Making the Spring AI streaming chat service compatible with the MUI X
+    Chat ChatBox Adapter.
+
+commit e76e96ed11acdcd13e3f082d7942cf1fe925e140
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sun Jul 5 12:08:17 2026 +0200
+
+    Making the Spring AI streaming chat service compatible with MUI X Chat.
+    
+    Making the Spring AI streaming chat service compatible with the MUI X
+    Chat ChatBox Adapter.
+
+commit 43d7fd187bf4ca49bee20df574f581b66b5ea3c7
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sun Jul 5 11:59:33 2026 +0200
+
+    Making the Spring AI streaming chat service compatible with MUI X Chat.
+    
+    Making the Spring AI streaming chat service compatible with the MUI X
+    Chat ChatBox Adapter.
+
+commit 7277ec1bc39c369141d101a83b897e60052c5ca7
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sun Jul 5 11:14:31 2026 +0200
+
+    Spring AI streaming chat service should handle form encoded requests.
+    
+    Spring AI streaming chat service should handle form encoded requests
+    as well as json encoded requests.
+
+commit 11f9a65d3dc23f7b332dc41568d9ffc334bae096
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sun Jun 28 02:05:42 2026 +0200
+
+    Adding reasoning to Spring AI streaming chat service.
+    
+    Adding reasoning to Spring AI streaming chat service.
+
+commit bd9ee9d68df3f6495a58ffd5f056ea6159a35968
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sun Jun 28 02:04:36 2026 +0200
+
+    Adding reasoning to Spring AI streaming chat service.
+    
+    Adding reasoning to Spring AI streaming chat service.
+
+commit 274deb2ab58a1345d5d3baf205ff31aec7b8af93
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sun Jun 28 02:03:31 2026 +0200
+
+    Upgrading Spring AI to 2.0.0.
+    
+    Upgrading Spring AI to 2.0.0.
+
+commit 9259f50a6cd2faca3b57b4ebabf50d67a55e7648
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sun Jun 28 02:03:01 2026 +0200
+
+    Upgrading Spring AI to 2.0.0.
+    
+    Upgrading Spring AI to 2.0.0.
+
+commit b7bd16a9941307e70d2697816a35b1348d330830
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sun Jun 28 01:43:13 2026 +0200
+
+    Upgrading Spring AI to 2.0.0.
+    
+    Upgrading Spring AI to 2.0.0.
+
+commit 1513f12e0d0e243ceed2931e5c0ff2a37f886225
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sun Jun 28 01:42:39 2026 +0200
+
+    Upgrading Spring AI to 2.0.0.
+    
+    Upgrading Spring AI to 2.0.0.
+
+commit 0f8bd7831e308204c9b353ea398e764748b06891
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sun Jun 28 01:31:07 2026 +0200
+
+    Upgrading Spring AI to 2.0.0.
+    
+    Upgrading Spring AI to 2.0.0.
+
+commit 4f81409ae2126adb620660411bea9e6db2c039c2
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sun Jun 28 01:30:40 2026 +0200
+
+    Upgrading Spring AI to 2.0.0.
+    
+    Upgrading Spring AI to 2.0.0.
+
+commit 8b85cacafd3d307954f6976bb327f2470d2bdcb3
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sun Jun 28 01:24:24 2026 +0200
+
+    Upgrading Spring AI to 1.1.8.
+    
+    Upgrading Spring AI to 1.1.8.
+
+commit 8eab8f5699afe49a0ad34a5f00f98083aafd8693
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sun Jun 28 01:23:53 2026 +0200
+
+    Upgrading Spring AI to 1.1.8.
+    
+    Upgrading Spring AI to 1.1.8.
+
+commit f9f5cc0205edbb00cc626cbcccf70981f0c88f78
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sun Jun 28 01:11:12 2026 +0200
+
+    Stashing.
+    
+    drwxr-xr-x  4 john  staff       128 mars 11 08:41 .
+    drwxr-xr-x  3 john  staff        96 mars 11 08:40 ..
+    -rw-r--r--  1 john  staff   9888902 jan. 24  2021 FreeBSD 12.2 Handbook.pdf
+    -rw-r--r--@ 1 john  staff  24001677 feb.  3  2025 FreeBSD 14.2 Handbook.pdf
+
+commit 0b09feba1ec6a18c6be12be8203fca3289086633
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sun Jun 28 01:10:19 2026 +0200
+
+    Stashing.
+    
+    -rwxr-xr-x@ 1 john  staff  194 mars 11 21:31 kbadmapp/ask.sh
+    -rwxr-xr-x@ 1 john  staff  196 mars 11 21:31 kbadmapp/call.sh
+    -rwxr-xr-x@ 1 john  staff  65 mars 11 21:31 kbadmapp/load.sh
+
+commit 7850e89d7dc37bb73b80c9c9b62df010d443f6a7
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sun Jun 28 01:09:33 2026 +0200
+
+    Implementing a streaming chat service via Spring AI.
+    
+    Implementing a streaming chat service via Spring AI.
+
+commit 6289d0afe34b8b8ec4179b017cdb53b0a02efe03
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sun Jun 28 01:09:03 2026 +0200
+
+    Implementing a streaming chat service via Spring AI.
+    
+    Implementing a streaming chat service via Spring AI.
+
+commit 72b2161fc1da27f5069edbdc2cf76dbfece45608
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sun Jun 28 01:08:20 2026 +0200
+
+    Checking in Eclipse IDE maven project.
+    
+    Checking in Eclipse IDE maven project.
+
+commit 458954dbae9404ab862fad20b2e920c7fe7eba0c
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sun Jun 28 01:08:00 2026 +0200
+
+    Checking in Eclipse IDE maven project.
+    
+    Checking in Eclipse IDE maven project.
+
+commit 91a47e4400b04a1e13f21cc61609429b7a05348c
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sun Jun 28 01:07:34 2026 +0200
+
+    Checking in Eclipse IDE maven project.
+    
+    Checking in Eclipse IDE maven project.
+
+commit 9ad321bec1075d33cf7c490be684f78cbdc817aa
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sun Jun 28 01:06:18 2026 +0200
+
+    Implementing a streaming chat service via Spring AI.
+    
+    Implementing a streaming chat service via Spring AI.
+
+commit 46af7613c5f5c413d0309edf00966c6413795e93
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sat Jun 27 17:11:56 2026 +0200
+
+    Implementing a streaming chat service via Spring AI.
+    
+    Implementing a streaming chat service via Spring AI.
+
+commit e096ca1ce4b4b54ecb881fb050000b87d91906c4
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sat Jun 27 17:10:06 2026 +0200
+
+    Implementing a streaming chat service via Spring AI.
+    
+    Implementing a streaming chat service via Spring AI.
+
+commit 8fd7488ea0201886d359b49e52e9594d80ce0369
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sat Jun 27 17:09:58 2026 +0200
+
+    Implementing a streaming chat service via Spring AI.
+    
+    Implementing a streaming chat service via Spring AI.
+
+commit e8be3cd46ed84ad837cb4220e31c09a99f1a2e49
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sat Jun 27 17:08:20 2026 +0200
+
+    Implementing a streaming chat service via Spring AI.
+    
+    Implementing a streaming chat service via Spring AI.
+
+commit 8838c23aaf894763fae60a57f519003fa48a0c8a
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sat Jun 27 16:51:29 2026 +0200
+
+    Stashing.
+    
+    -rw-r--r--@ 1 john  staff  4281 mars 13 03:25 kbadmapp/src/main/java/io/labber/kbadm/KBService.java
+
+commit 597d3f4627c1d2476e14ae5e2692a36306a68d15
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sat Jun 27 16:50:31 2026 +0200
+
+    Stashing.
+    
+    -rw-r--r--@ 1 john  staff  2344 juni 26 15:28 kbadmapp/src/main/java/io/labber/kbadm/config/ApplicationConfig.java
+
+commit 67c0710499658a5c807529de771bd221ac2ac8e7
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sat Jun 27 16:49:22 2026 +0200
+
+    Stashing.
+    
+    -rw-r--r--@ 1 john  staff  6216 mars 14 02:04 kbadmlib/src/main/java/io/labber/kbadm/impl/neo4j/Neo4jStoreConfigLoader.java
+
+commit 3a6205be48dda5ae7140bbc532dc9b130d4a0850
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sat Jun 27 16:48:35 2026 +0200
+
+    Stashing.
+    
+    -rw-r--r--@ 1 john  staff  4805 juni 26 11:29 kbadmlib/src/test/java/io/labber/kbadm/impl/pgvector/QueryTest.java
+    -rw-r--r--@ 1 john  staff  5406 juni 26 11:29 kbadmlib/src/test/java/io/labber/kbadm/impl/pgvector/QueryTest2.java
+    -rw-r--r--@ 1 john  staff  4730 juni 26 11:29 kbadmlib/src/test/java/io/labber/kbadm/impl/pgvector/SynchronizerTest.java
+    -rw-r--r--@ 1 john  staff  5656 juni 26 11:29 kbadmlib/src/test/java/io/labber/kbadm/impl/pgvector/ValidatorTest.java
+    -rw-r--r--@ 1 john  staff  19709 juni 26 11:29 kbadmlib/src/test/java/io/labber/kbadm/impl/pgvector/ValidatorTest2.java
+
+commit add8fd1184161abbb9f881f13b7cf1b7cc5b0a6b
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sat Jun 27 16:47:27 2026 +0200
+
+    Stashing.
+    
+    -rw-r--r--@ 1 john  staff  4020 mars 12 03:52 kbadmlib/src/main/java/io/labber/kbadm/impl/pgvector/PgVectorStoreConfigImpl.java
+    -rw-r--r--@ 1 john  staff  6627 mars 13 03:02 kbadmlib/src/main/java/io/labber/kbadm/impl/pgvector/PgVectorStoreConfigLoader.java
+    -rw-r--r--@ 1 john  staff  12938 mars 14 03:14 kbadmlib/src/main/java/io/labber/kbadm/impl/pgvector/PgVectorStoreDriverImpl.java
+
+commit e047cf64848e6087fcb14b82f12b224253662d5c
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sat Jun 27 16:46:11 2026 +0200
+
+    Stash
+    
+    -rw-r--r--@ 1 john  staff  4092 mars 13 03:22 kbadmlib/src/main/java/io/labber/kbadm/impl/neo4j/Neo4jStoreConfigImpl.java
+    -rw-r--r--@ 1 john  staff  5534 mars 14 03:17 kbadmlib/src/main/java/io/labber/kbadm/impl/neo4j/Neo4jStoreDriverImpl.java
+
+commit 62e8a1b0b25bf9914d32c618afd16872e4012a19
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Wed Mar 11 19:38:48 2026 -0700
+
+    Workingish
+
+commit c8be33d7cba150aaff602219be7b155713311513
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Wed Mar 11 19:21:57 2026 -0700
+
+    Workingish
+
+commit a42bd8ad340161f7dfeecf5fc89f3f51682d8410
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Wed Mar 11 17:00:16 2026 -0700
+
+    Workingish
+
+commit 198ac7fd7960743e67baf6b25a1efe49154beb1c
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Wed Mar 11 17:00:04 2026 -0700
+
+    Workingish
+
+commit 2249abda9af38d725275183fedb9643e00f95f5a
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Wed Mar 11 14:00:28 2026 -0700
+
+    Workingish
+
+commit f4295e87551ffc02d72e14de949850aaea352261
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Wed Mar 11 13:43:47 2026 -0700
+
+    Workingish
+
+commit d2385091f001cdee8e35d4de55a1a5a5811dbeca
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Wed Mar 11 10:55:38 2026 -0700
+
+    Tesintg
+
+commit 7e30873dda7fd08a8969e63750d27d3cc4785c8c
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Wed Mar 11 10:53:39 2026 -0700
+
+    Tesintg
+
+commit 530df124fc95762ed25950961fc4bb6990ee2993
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Wed Mar 11 10:53:27 2026 -0700
+
+    Tesintg
+
+commit e9360bf56e7b9007949f7ba7acb4e9d9dbdbf4d0
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Wed Mar 11 10:53:16 2026 -0700
+
+    Tesintg
+
+commit 811057a710f1ff9ba47c06822388a814e378c5e1
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Wed Mar 11 10:47:47 2026 -0700
+
+    Tesitng
+
+commit fd8f3aad976401ef475aeefce5d031f4716f50e4
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Wed Mar 11 10:43:28 2026 -0700
+
+    Tesitng
+
+commit 27125744c8013fdd3b595d41b542ad936df36bbb
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Wed Mar 11 10:40:03 2026 -0700
+
+    Tesitng
+
+commit b28150da55dd2786b6985f55490c969f65684b70
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Wed Mar 11 10:39:36 2026 -0700
+
+    Tesitng
+
+commit c492e72ccd1e5a3d544fa4b5bc7ffa9b3fe3818d
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Mon Mar 9 20:02:39 2026 -0700
+
+    KB App
+
+commit e55d9ee7113864432ca8789e9315fc70ba66374f
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Mon Mar 9 20:02:24 2026 -0700
+
+    KB App
+
+commit 9ebd45b3ad0add63eaa3e3fd5ff1d42e9bf9c613
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Mon Mar 9 16:52:12 2026 -0700
+
+    Stashing
+    
+    john@Johns-MacBook-Pro-13-M2.local ~/Documents/development/kbadm>ls -al kbadmlib/pom.xml__
+    -rw-r--r--@ 1 john  staff  3723 jan. 20 08:02 kbadmlib/pom.xml__
+
+commit f34624faae4a40bc9d5f8d7fc7ee739a64a7f1a1
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Mon Mar 9 16:51:45 2026 -0700
+
+    Testing
+    
+    john@Johns-MacBook-Pro-13-M2.local ~/Documents/development/kbadm>ls -al kbadmapp/src/test/resources/
+    total 16
+    drwxr-xr-x@ 4 john  staff  128 feb.  7 13:48 .
+    drwxr-xr-x@ 4 john  staff  128 feb.  7 13:48 ..
+    -rw-r--r--@ 1 john  staff  129 feb.  7 11:46 application.properties
+    -rw-r--r--@ 1 john  staff  970 feb.  7 12:29 config.json
+
+commit 5081c0bb34901329c057b3f069e8bf3ab5058a5a
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Mon Mar 9 16:51:22 2026 -0700
+
+    Tesitng
+    
+    john@Johns-MacBook-Pro-13-M2.local ~/Documents/development/kbadm>ls -al kbadmapp/src/test/java/io/labber/kbadm/config/
+    total 48
+    drwxr-xr-x@ 8 john  staff   256 feb.  7 12:21 .
+    drwxr-xr-x@ 3 john  staff    96 feb.  7 12:13 ..
+    -rw-r--r--@ 1 john  staff  1343 feb.  7 13:57 Config.java
+    -rw-r--r--@ 1 john  staff  1968 feb.  7 13:54 ConfigTest.java
+    -rw-r--r--@ 1 john  staff   706 feb.  7 12:30 DatasourceConfig.java
+    -rw-r--r--@ 1 john  staff   704 feb.  7 12:31 EndpointConfig.java
+    -rw-r--r--@ 1 john  staff   765 feb.  7 12:34 KnowledgebaseConfig.java
+    -rw-r--r--@ 1 john  staff   755 feb.  7 12:34 VectorstoreConfig.java
+
+PICKED commit 62a0cc71ad95f8ff8a0a08ba1da698a5198a8603
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Mon Mar 9 16:50:45 2026 -0700
+
+    john@Johns-MacBook-Pro-13-M2.local ~/Documents/development/kbadm>ls -al kbadmapp/src/main/resources/
+    total 16
+    drwxr-xr-x@ 4 john  staff  128 feb.  7 11:46 .
+    drwxr-xr-x@ 5 john  staff  160 feb.  7 11:45 ..
+    -rw-r--r--@ 1 john  staff  129 feb.  7 11:46 application.properties
+    -rw-r--r--@ 1 john  staff  970 feb.  7 12:29 config.json
+
+commit 922f501184d780d4dbafca77bd95a3f5b81711aa
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Mon Mar 9 16:50:04 2026 -0700
+
+    App config
+    
+    john@Johns-MacBook-Pro-13-M2.local ~/Documents/development/kbadm>ls -al kbadmapp/src/main/java/io/labber/kbadm/config/
+    total 16
+    drwxr-xr-x@ 4 john  staff   128 feb.  7 11:42 .
+    drwxr-xr-x@ 4 john  staff   128 feb.  7 09:55 ..
+    -rw-r--r--@ 1 john  staff  2435 feb.  7 11:44 ApplicationConfig.java
+    -rw-r--r--@ 1 john  staff  1097 feb.  7 09:56 SecurityConfig.java
+
+commit ddcb5ac45961589a2e9386a76e852a39203ffa8d
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Mon Mar 9 16:49:42 2026 -0700
+
+    App
+    
+    john@Johns-MacBook-Pro-13-M2.local ~/Documents/development/kbadm>ls -al kbadmapp/src/main/java/io/labber/kbadm/Application.java
+    -rw-r--r--@ 1 john  staff  1412 feb.  7 09:55 kbadmapp/src/main/java/io/labber/kbadm/Application.java
+
+PICKED commit e62c1932c798383cb26384941be5c3b68725646f
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Mon Mar 9 16:48:24 2026 -0700
+
+    Models
+    
+    john@Johns-MacBook-Pro-13-M2.local ~/Documents/development/kbadm>ls -al kbadmlib/src/main/java/io/labber/kbadm/model/Request.java
+    -rw-r--r--@ 1 john  staff  161 jan. 19 11:51 kbadmlib/src/main/java/io/labber/kbadm/model/Request.java
+    john@Johns-MacBook-Pro-13-M2.local ~/Documents/development/kbadm>ls -al kbadmlib/src/main/java/io/labber/kbadm/model/Response.java
+    -rw-r--r--@ 1 john  staff  162 jan. 19 11:51 kbadmlib/src/main/java/io/labber/kbadm/model/Response.java
+
+commit bf9ddff2034599d7731761d8aa3329d030af3b27
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Mon Mar 9 16:47:37 2026 -0700
+
+    Admin,
+    
+    john@Johns-MacBook-Pro-13-M2.local ~/Documents/development/kbadm>ls -al kbadmlib/src/main/java/io/labber/kbadm/store/IStoreAdmin.java
+    -rw-r--r--@ 1 john  staff  169 jan. 19 11:51 kbadmlib/src/main/java/io/labber/kbadm/store/IStoreAdmin.java
+    john@Johns-MacBook-Pro-13-M2.local ~/Documents/development/kbadm>ls -a kbadmlib/src/main/java/io/labber/kbadm/store/StoreAdmin.java
+    kbadmlib/src/main/java/io/labber/kbadm/store/StoreAdmin.java
+
+commit d383175d763a24389fe9ffab7303f54fbdd5450e
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Mon Mar 9 16:46:49 2026 -0700
+
+    Synchronizer.
+    
+    john@Johns-MacBook-Pro-13-M2.local ~/Documents/development/kbadm>ls -al kbadmlib/src/main/java/io/labber/kbadm/synchronize/
+    total 24
+    drwxr-xr-x@ 4 john  staff   128 feb.  5 09:44 .
+    drwxr-xr-x@ 9 john  staff   288 feb.  5 09:43 ..
+    -rw-r--r--@ 1 john  staff  4809 feb.  5 19:40 DocumentSynchronizer.java
+    -rw-r--r--@ 1 john  staff   757 feb.  5 19:10 IDocumentSynchronizer.java
+
+commit 3594eca69107c72da9f3c6a9d8269e680ff4f4ef
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Mon Mar 9 16:45:55 2026 -0700
+
+    Testing
+    
+    ls -al kbadmlib/src/test/java/io/labber/kbadm/impl/pgvector/PgVectorStoreDriverImpl.java
+    -rw-r--r--  1 john  staff  0 jan. 20 16:29 kbadmlib/src/test/java/io/labber/kbadm/impl/pgvector/PgVectorStoreDriverImpl.java
+    john@Johns-MacBook-Pro-13-M2.local ~/Documents/development/kbadm>ls -al kbadmlib/src/test/java/io/labber/kbadm/impl/pgvector/SynchronizerTest.java
+    -rw-r--r--@ 1 john  staff  4362 feb.  5 19:49 kbadmlib/src/test/java/io/labber/kbadm/impl/pgvector/SynchronizerTest.java
+    john@Johns-MacBook-Pro-13-M2.local ~/Documents/development/kbadm>ls -al kbadmlib/src/test/java/io/labber/kbadm/impl/pgvector/ValidatorTest.java
+    -rw-r--r--@ 1 john  staff  5268 feb.  5 19:42 kbadmlib/src/test/java/io/labber/kbadm/impl/pgvector/ValidatorTest.java
+    john@Johns-MacBook-Pro-13-M2.local ~/Documents/development/kbadm>ls -al kbadmlib/src/test/java/io/labber/kbadm/impl/pgvector/ValidatorTest2.java
+    -rw-r--r--@ 1 john  staff  18489 feb.  5 19:42 kbadmlib/src/test/java/io/labber/kbadm/impl/pgvector/ValidatorTest2.java
+
+commit 3a55622ae97d9be1ff474e79a38821ed417e48dc
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Mon Mar 9 15:01:58 2026 -0700
+
+    Testing
+    
+    john@Johns-MacBook-Pro-13-M2.local ~/Documents/development/kbadm>ls -al kbadmlib/src/test/java/io/labber/kbadm/impl/pgvector/QueryTest.java
+    -rw-r--r--@ 1 john  staff  4463 feb.  5 19:42 kbadmlib/src/test/java/io/labber/kbadm/impl/pgvector/QueryTest.java
+    john@Johns-MacBook-Pro-13-M2.local ~/Documents/development/kbadm>ls -al kbadmlib/src/test/java/io/labber/kbadm/impl/pgvector/QueryTest2.java
+    -rw-r--r--@ 1 john  staff  5014 feb.  5 19:42 kbadmlib/src/test/java/io/labber/kbadm/impl/pgvector/QueryTest2.java
+
+commit e95c809067c3952d2c6428fa9e44d3f3e6a7ddc2
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Mon Mar 9 15:00:55 2026 -0700
+
+    Testing
+    
+    john@Johns-MacBook-Pro-13-M2.local ~/Documents/development/kbadm>ls -al kbadmlib/src/test/java/io/labber/jdbc/
+    total 200
+    drwxr-xr-x  8 john  staff    256 jan. 25 09:05 .
+    drwxr-xr-x@ 5 john  staff    160 jan. 20 16:40 ..
+    -rw-r--r--@ 1 john  staff   6984 feb.  5 19:41 JdbcTest.java
+    -rw-r--r--@ 1 john  staff   7266 feb.  5 19:42 JdbcTest2.java
+    -rw-r--r--@ 1 john  staff  22787 feb.  5 19:42 JdbcTest3.java
+    -rw-r--r--@ 1 john  staff  24480 feb.  5 19:42 JdbcTest4.java
+    -rw-r--r--@ 1 john  staff   6712 feb.  5 19:42 JdbcTest5.java
+    -rw-r--r--@ 1 john  staff  24732 feb.  5 19:42 JdbcTest6.java
+
+commit 39a6c91fadfdf677f289265611d788e75dfc0200
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Mon Mar 9 15:00:04 2026 -0700
+
+    Testing
+    
+    john@Johns-MacBook-Pro-13-M2.local ~/Documents/development/kbadm>ls -al kbadmapp/pom.xml
+    -rw-r--r--@ 1 john  staff  2814 feb.  7 13:46 kbadmapp/pom.xml
+
+commit d1c3f0dac4c8e1d79da169b1273eb5c5d31a0e6e
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Mon Mar 9 14:03:10 2026 -0700
+
+    Neo4j driver
+
+commit 60165f552113a04dac50664b86d7190d47ee81a3
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Mon Mar 9 14:03:01 2026 -0700
+
+    Neo4j driver
+
+commit a8af85fb9f9d6845bad10667a87a99776ef6bab7
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Mon Mar 9 14:02:20 2026 -0700
+
+    john@Johns-MacBook-Pro-13-M2.local ~/Documents/development/kbadm>ls -al kbadmlib/src/main/java/io/labber/kbadm/driver/IDriver.java
+    -rw-r--r--@ 1 john  staff  1672 feb.  5 19:30 kbadmlib/src/main/java/io/labber/kbadm/driver/IDriver.java
+
+commit 627faecfb3978de34ae96a9520d09cb6a0830184
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Mon Mar 9 14:01:56 2026 -0700
+
+    john@Johns-MacBook-Pro-13-M2.local ~/Documents/development/kbadm>ls -al kbadmlib/src/main/java/io/labber/kbadm/KBException.java
+    -rw-r--r--@ 1 john  staff  507 feb.  5 10:41 kbadmlib/src/main/java/io/labber/kbadm/KBException.java
+
+commit 9b2067dd1a0b6de9222ad19fa364520918eb542e
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Mon Mar 9 14:01:29 2026 -0700
+
+    john@Johns-MacBook-Pro-13-M2.local ~/Documents/development/kbadm>ls -al kbadmlib/src/main/java/io/labber/kbadm/impl/pgvector/PgVectorStoreDriverImpl.java
+    -rw-r--r--@ 1 john  staff  10769 feb.  5 19:33 kbadmlib/src/main/java/io/labber/kbadm/impl/pgvector/PgVectorStoreDriverImpl.java
+
+commit c85d4345ec94aa7e247fa59deff84338dc393963
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Thu Feb 5 10:27:54 2026 -0800
+
+    Document Repair.
+    
+    john@controller2.localdomain ~/Documents/development/kbadm>ls -al kbadmlib/src/main/java/io/labber/kbadm/validator/DocumentRepairer.java
+    -rw-r--r--@ 1 john  staff  5310 jan. 26 09:09 kbadmlib/src/main/java/io/labber/kbadm/validator/DocumentRepairer.java
+    john@controller2.localdomain ~/Documents/development/kbadm>ls -al kbadmlib/src/main/java/io/labber/kbadm/validator/IDocumentRepairer.java
+    -rw-r--r--@ 1 john  staff  455 jan. 26 07:58 kbadmlib/src/main/java/io/labber/kbadm/validator/IDocumentRepairer.java
+
+commit 80040f7b7db60c725e87c74c8952ef29c834c6d8
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Thu Feb 5 10:27:03 2026 -0800
+
+    Document Repair.
+    
+    john@controller2.localdomain ~/Documents/development/kbadm>ls -al  kbadmlib/src/main/java/io/labber/kbadm/validator/IDocumentValidator.java
+    -rw-r--r--@ 1 john  staff  462 jan. 26 07:50 kbadmlib/src/main/java/io/labber/kbadm/validator/IDocumentValidator.java
+    john@controller2.localdomain ~/Documents/development/kbadm>ls -al kbadmlib/src/main/java/io/labber/kbadm/validator/IDocumentValidator.java
+    -rw-r--r--@ 1 john  staff  462 jan. 26 07:50 kbadmlib/src/main/java/io/labber/kbadm/validator/IDocumentValidator.java
+
+commit 33f1f5cf35b74e70881b9c50aeb061c217722b27
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Thu Feb 5 10:25:33 2026 -0800
+
+    Document Repair.
+    
+    john@controller2.localdomain ~/Documents/development/kbadm>ls -al kbadmlib/src/main/java/io/labber/kbadm/validator/RepairStatus.java
+    -rw-r--r--@ 1 john  staff  760 jan. 26 08:14 kbadmlib/src/main/java/io/labber/kbadm/validator/RepairStatus.java
+    john@controller2.localdomain ~/Documents/development/kbadm>ls -al kbadmlib/src/main/java/io/labber/kbadm/validator/ValidationStatus.java
+    -rw-r--r--@ 1 john  staff  991 jan. 26 08:13 kbadmlib/src/main/java/io/labber/kbadm/validator/ValidationStatus.java
+
+commit 1626fbf5ce3f28aca5e18dfb7277476eddd1f882
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Thu Feb 5 10:24:23 2026 -0800
+
+    Document Repair
+    
+    john@controller2.localdomain ~/Documents/development/kbadm>ls -al kbadmlib/src/main/java/io/labber/kbadm/model/Status.java
+    -rw-r--r--@ 1 john  staff  574 jan. 25 10:28 kbadmlib/src/main/java/io/labber/kbadm/model/Status.java
+
+commit 9ec080bc30e0b51c1087da13fd5d6e215c9f7ff0
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sat Jan 24 13:01:56 2026 -0800
+
+    Statement queries
+
+commit 6338027a3dbdf02abb3e1fadd2cc2607438876f9
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sat Jan 24 13:01:38 2026 -0800
+
+    Statement queries
+
+commit 770bad7091bcf51e2817ed845367637f393269f7
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sat Jan 24 12:47:30 2026 -0800
+
+    Statement queries
+
+commit 578b2b401369b1400651da0e52f3569362a0c0a3
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sat Jan 24 08:42:41 2026 -0800
+
+    Statement queries
+
+commit 3b3867b315a16eefbeec13d159bc53c0a1d2dc6e
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sat Jan 24 08:39:36 2026 -0800
+
+    Statement queries
+
+commit e417a4771ac7775057ab59d037cd4526ee6e797b
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sat Jan 24 08:38:23 2026 -0800
+
+    Statement queries
+
+commit 0634f57e35d2d91357575642141334bc24a98815
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sat Jan 24 08:34:23 2026 -0800
+
+    Cleanup
+
+commit ee6bed1d90255f65c9036f557d09e9a774cf901a
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sat Jan 24 08:32:59 2026 -0800
+
+    New Validator
+
+commit 8368fa5928482c634c25cc934afc12f6548dfa3d
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Fri Jan 23 10:10:01 2026 -0800
+
+    New Validator
+
+commit ec33e435ae3c37ece2c7447fb2b3222f55b0cfe9
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Fri Jan 23 09:56:59 2026 -0800
+
+    New Validator
+
+commit 2866a72a83837500d2f07e59c436946c3290300d
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Fri Jan 23 09:56:04 2026 -0800
+
+    Add models
+
+commit a6a02eea5d514454fef5fc871b438ea20d2ecc7a
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Fri Jan 23 09:55:38 2026 -0800
+
+    With
+
+commit 6122f97b40e7f723c21a97824743ca8af2d1b17e
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Fri Jan 23 07:38:47 2026 -0800
+
+    New Validator
+
+commit 103c132e629c87a8b952cf1f471f5325388dba0d
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Fri Jan 23 07:37:55 2026 -0800
+
+    Add models
+
+commit 5c29d568198ce5d97585f25cc8b4c1357d284402
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Fri Jan 23 07:37:11 2026 -0800
+
+    Add models
+
+commit 5bb928bb11a927b495063e57b35c9df14cc2d3b1
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Fri Jan 23 07:36:59 2026 -0800
+
+    Add models
+
+commit 9dbff2136a93adeb873a80f7b67407ae450c4966
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Thu Jan 22 17:08:46 2026 -0800
+
+    Add models
+
+commit c0a046674cb68c101b30a58a513960a4ae30e24d
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Thu Jan 22 17:07:45 2026 -0800
+
+    Add models
+
+commit 59d82c751882926ee87d4fc540acba0e532015c2
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Thu Jan 22 17:01:16 2026 -0800
+
+    Add models
+
+commit cb467238e41a5be197c4715a5966e9a680c6dfd9
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Thu Jan 22 17:00:27 2026 -0800
+
+    Add models
+
+commit d509e84a2609fc27aa0c644493acfab0b90ed95f
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Thu Jan 22 16:59:10 2026 -0800
+
+    Add models
+
+commit 312e61dbf6b2e312f64bc792b744db6d58339e5e
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Tue Jan 20 16:56:43 2026 -0800
+
+    Unit testing
+
+commit 81faa12f1e284e9b8c6c60162c4f0fa88d1bf208
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Tue Jan 20 16:46:52 2026 -0800
+
+    Unit testing
+
+commit 8fadf3c171bb01e61326c3eb61a44f3edd716f7d
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Tue Jan 20 16:46:44 2026 -0800
+
+    Unit testing
+
+commit dcf7c8d87252838080dd460fbbe4043b2f3b6a99
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Tue Jan 20 16:46:22 2026 -0800
+
+    Unit testing
+
+commit 2f4875e5228e3f0853dc1214c968fd421654a3d6
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Tue Jan 20 10:39:49 2026 -0800
+
+    PostgreSQL PGVEctor schema stuff
+
+commit a4e64c57e9b51ce159f5bb149ddcd65f6e5c7475
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Tue Jan 20 10:39:10 2026 -0800
+
+    PostgreSQL PGVEctor schema stuff
+
+commit a555fc669fc66320d876f6bf35b8f5930c04419c
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Tue Jan 20 10:37:59 2026 -0800
+
+    PostgreSQL PGVEctor store tables
+
+commit 66e7ccf237862c7bdd0c12db6b55fba3844c5993
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Tue Jan 20 09:12:58 2026 -0800
+
+    PostgreSQL PGVEctor store tables
+
+commit 8993b51ede4605baf1e6412c43775e9c0ee0a734
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Tue Jan 20 09:00:23 2026 -0800
+
+     PostgreSQL PGVEctor store table names
+
+commit 06d8c7d94b1b804cdedb9d66c902ed1f8932b672
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Tue Jan 20 08:47:04 2026 -0800
+
+    Basic props
+
+commit 852c5dcb19a9f4a4531808ec3e0bd1c4aefd75d4
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Tue Jan 20 08:35:15 2026 -0800
+
+    Add
+
+commit 48034f70d3cfb262de70e0a0008e3a29884fafbd
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Tue Jan 20 08:34:46 2026 -0800
+
+    Add
+
+commit 0764843e0c92f736c774439581252206db45d01f
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Tue Jan 20 08:33:42 2026 -0800
+
+    PostgreSQL PGVEctor store
+
+commit 1987e45f4075d1ed4f8512acaeedebae096f0f5a
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Tue Jan 20 08:32:31 2026 -0800
+
+    PostgreSQL PGVEctor store
+
+commit da9a62b359f4df93b9ad86a4c2473e3741c1c618
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Tue Jan 20 08:29:39 2026 -0800
+
+    PostgreSQL PGVEctor store
+
+commit 6a8506be621ccf5d8ad5d909f1c7c78d82b9ab22
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Tue Jan 20 08:27:28 2026 -0800
+
+    PostgreSQL PGVEctor store
+
+commit d90c715af678458da209c56de02a337f0bb6e6af
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Tue Jan 20 08:24:09 2026 -0800
+
+    PostgreSQL PGVEctor store
+
+commit f1707853a3de88d2e5402938ce1604c700776d41
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Tue Jan 20 08:23:04 2026 -0800
+
+    ReAdd
+
+commit d84b53f9fa1c499e525a96eeca28af24c1856f4f
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Tue Jan 20 08:21:10 2026 -0800
+
+    Add
+
+commit 03fa306e2d4762462b437894104d7f259cbb5996
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Tue Jan 20 08:20:57 2026 -0800
+
+    Add
+
+commit e3dbb8f63f32cc935c4990ff4b30cea1c4cb06cf
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Tue Jan 20 08:20:26 2026 -0800
+
+    Add
+
+commit 44029b07682f67d7d86130b9af574e83ba30d808
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Tue Jan 20 08:19:26 2026 -0800
+
+    Add
+
+commit 352ec984dd7c41c9d91e57d2977a108d674e610c
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Tue Jan 20 08:18:23 2026 -0800
+
+    Add
+
+commit bafaa11f1cc4dea6be79087021e9330d24deeabd
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Mon Jan 19 11:20:36 2026 -0800
+
+    Adding new KB admin subprojects.
+    
+    Adding new KB admin subprojects.
+
+commit b7b787587383993363da638da537efa97579a7d2
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Mon Jan 19 11:20:25 2026 -0800
+
+    Adding new KB admin subprojects.
+    
+    Adding new KB admin subprojects.
+
+commit d0f96a65784f919919eb04555a4a9329cdf02114
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Mon Jan 19 11:19:37 2026 -0800
+
+    Adding new KB admin subprojects.
+    
+    Adding new KB admin subprojects.
+
+commit 905b541ab4ae92bb14810d0f3ab5baefdcea23e9
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Mon Jan 19 11:19:21 2026 -0800
+
+    Adding new KB admin subprojects.
+    
+    Adding new KB admin subprojects.
+
+commit 6b8c50673fa9e18e4144168c0e0789ae9396189d
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Mon Jan 19 11:19:09 2026 -0800
+
+    Adding new KB admin subprojects.
+    
+    Adding new KB admin subprojects.
+
+commit b46b3c08f4c4b524a7726d5ec2eb86f3484ee073
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Mon Jan 19 11:18:11 2026 -0800
+
+    Adding new KB admin subprojects.
+    
+    Adding new KB admin subprojects.
+
+commit 467560b8a884256dbdad7b47c589b8208e5615e0
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Mon Jan 19 11:14:23 2026 -0800
+
+    Initial commit

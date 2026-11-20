@@ -1,0 +1,76 @@
+
+
+john@Johns-MacBook-Pro-13-M2-3.local ~/Documents/development/kbadm>git log testing5 --pretty=format:"%at - %h: %s" --date=short
+
+---
+
+1770522161 - b468f87: Updating statement query tests.
+1770522154 - a683b9d: Updating statement query tests.
+
+---
+
+
+
+john@Johns-MacBook-Pro-13-M2-3.local ~/Documents/development/kbadm>git log testing2 --pretty=format:"%at - %h: %s" --date=short
+
+---
+
+1770522551 - c5a83d6: Additional JDBC Query tests.
+1770522174 - a79108c: Additional JDBC Query tests.
+1770522551 - c5a83d6: Additional JDBC Query tests.
+1770522174 - a79108c: Additional JDBC Query tests.
+1770522168 - acba937: Additional JDBC Query tests.
+1770522154 - df3dcfc: Additional JDBC Query tests.
+1770522144 - 31a3a9d: Additional JDBC Query tests.
+1770522137 - 2a19507: Additional JDBC Query tests.
+1770522132 - c3bd15f: Additional JDBC Query tests.
+1770522127 - af25910: Additional JDBC Query tests.
+1770522122 - 5d3a89b: Additional JDBC Query tests.
+1770522117 - ba419d6: Additional JDBC Query tests.
+1770500760 - 54db7cd: Additional JDBC Query tests.
+1769300998 - 3d5f351: Additional JDBC Query tests.
+
+---
+
+
+john@Johns-MacBook-Pro-13-M2-3.local ~/Documents/development/kbadm>git log driver --pretty=format:"%at - %h: %s" --date=short
+
+---
+
+1770521600 - e1c939a: Driver updates.
+1770521456 - 196d257: Driver updates.
+1770489689 - c0dab80: Driver updates.
+
+---
+
+
+
+john@Johns-MacBook-Pro-13-M2-3.local ~/Documents/development/kbadm>git log synchronizer --pretty=format:"%at - %h: %s" --date=short
+
+---
+
+1770522551 - 2fdc996: Document Synchronizer tests.
+1770522043 - 7db4fd9: Adding a New Document Synchronizer.
+1770520251 - 5ad9549: Adding a New Document Synchronizer.
+1770488899 - 6103356: Adding a New Document Repairer.
+1770484173 - 81f21ed: Adding a New Document Repairer.
+1770480840 - fd495a7: Adding a New Document Repairer.
+1770480800 - 3f07e9b: Adding a New Document Repairer.
+1770479993 - 1047e8a: Adding a New Document Repairer.
+1770479921 - cb01e39: Adding a New Document Repairer.
+1770479458 - ea7e093: Adding a New Document Repairer.
+1769374916 - f67ef15: Writing statement queries for PostgreSQL PGVector stores.
+1769374898 - ab82383: Writing statement queries for PostgreSQL PGVector stores.
+1769374050 - ad892da: Writing statement queries for PostgreSQL PGVector stores.
+1769366561 - b311f07: Writing statement queries for PostgreSQL PGVector stores.
+1769366376 - dddb849: Writing statement queries for PostgreSQL PGVector stores.
+1769366303 - 2f6cd81: Writing statement queries for PostgreSQL PGVector stores.
+1769366063 - ef5b898: Cleanup.
+1769365979 - 95a8d3f: Adding a New Document Validator.
+1769364601 - 25fa526: Adding a New Document Validator.
+1769363819 - f357200: Adding a New Document Validator.
+1769355527 - e3861ae: Adding a New Document Validator.
+
+---
+
+1769873875 - 1ba1811: Adding additional models for Document chunking.

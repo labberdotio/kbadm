@@ -1,0 +1,56 @@
+commit 1ba181129e3bdbb0b50a78f25989c1fdd67524b4 (origin/models, models)
+Author: John Grundback <jgrundback@gmail.com>
+Date:   Sat Jan 31 07:37:55 2026 -0800
+
+    Adding additional models for Document chunking.
+    
+    Adding additional models for Document chunking. These models will be
+    used to chunk a Document into smaller sizes that fits in the vector
+    store as the Document is added to the knowledge base.
+
+
+
+1769300998 - 3d5f351c4da8ac9c97b7a550253926910a5fc9f1: Additional JDBC Query tests.
+LC_ALL=en_US.UTF-8 TZ=America/Los_Angeles GIT_COMMITTER_DATE="Sat 31 Jan 2026 16:29:58 PST" git commit --date "Sat 31 Jan 2026 16:29:58 PST"
+
+1769355527 - e3861ae10ce6180309e7f2f1c6c72e762c0b6306: Adding a New Document Validator.
+LC_ALL=en_US.UTF-8 TZ=America/Los_Angeles GIT_COMMITTER_DATE="Sat 31 Jan 2026 07:38:47 PST" git commit --date "Sat 31 Jan 2026 07:38:47 PST"
+
+1769363819 - f357200f35d1c02aaecf0d1b4c4cbe4200c7491f: Adding a New Document Validator.
+1769364601 - 25fa5268246f3850c62c62ea262a51ee4fad7c86: Adding a New Document Validator.
+1769365979 - 95a8d3f46e3ba8f13cab4364c68738c119b40f00: Adding a New Document Validator.
+1769366063 - ef5b8985cb53f3f78a273a1259cac1c81747e203: Cleanup.
+1769366303 - 2f6cd81a47ad340073ac4535658166176af66312: Writing statement queries for PostgreSQL PGVector stores.
+1769366376 - dddb8499c4d779a00fba5f275efa3184d38d500f: Writing statement queries for PostgreSQL PGVector stores.
+1769366561 - b311f0744755f51b73bb83997cc5608a879e7360: Writing statement queries for PostgreSQL PGVector stores.
+1769374050 - ad892dabc1aad7f264ad39fe4e8146108b65b60f: Writing statement queries for PostgreSQL PGVector stores.
+1769374898 - ab82383621049ee6216d41c7f32b5b7a6227b7f5: Writing statement queries for PostgreSQL PGVector stores.
+1769374916 - f67ef15c6bf0489b67a0d217c98b810632e8282d: Writing statement queries for PostgreSQL PGVector stores.
+
+1770479458 - ea7e09341e602115c0acb1a9c7937eba5e64634b: Adding a New Document Repairer.
+1770479921 - cb01e392f9ed445b614fceee392b409ed8d8a3e5: Adding a New Document Repairer.
+1770479993 - 1047e8a577b3685a30156ec587d5d5a0700f42c8: Adding a New Document Repairer.
+1770480800 - 3f07e9ba8b976d8b076841875cacd623eb15160b: Adding a New Document Repairer.
+1770480840 - fd495a796eeb64baba4926ebc216d4c61a59934a: Adding a New Document Repairer.
+1770484173 - 81f21ed3bf44b33b504e44228728b05ac3e8723b: Adding a New Document Repairer.
+1770488899 - 6103356f597c8bf858d12e58abb5ae4f3b3b31dc: Adding a New Document Repairer.
+1770489689 - c0dab800b7791499193be44e5d2e43675a0b60ba: Driver updates.
+1770500760 - 54db7cdb94a8e777f934d9123d6a6f758f8efe10: Additional JDBC Query tests.
+1770520251 - 5ad9549a70d6a842e8a2ddf8bb35906379b6a278: Adding a New Document Synchronizer.
+1770521456 - 196d25721de2f4a96b2fd10aa564455f3f479816: Driver updates.
+1770521600 - e1c939a05be7781a655a0eda29d430268718847c: Driver updates.
+1770522043 - 7db4fd9322cf5ed9b3257e2238d405ad275158dd: Adding a New Document Synchronizer.
+1770522117 - ba419d637fdca96f6ff96d38d851ca2300c6da63: Additional JDBC Query tests.
+1770522122 - 5d3a89b819baf5ff259f6813c97a1ae39e971cc1: Additional JDBC Query tests.
+1770522127 - af259103c3cd59d7b2d94e9d10029ffb69a19cf6: Additional JDBC Query tests.
+1770522132 - c3bd15f4c21ea4bf9075edd9e89c07819117d435: Additional JDBC Query tests.
+1770522137 - 2a195073d93d240c701076f1de2e581c3e0d4017: Additional JDBC Query tests.
+1770522144 - 31a3a9d4efa7fc9041a15bb444f11f4314339425: Additional JDBC Query tests.
+1770522154 - a683b9df80e270082a01525ad271efc473d8dfd4: Updating statement query tests.
+- 1770522154 - df3dcfc88a878a767728eeb2a40bec6c32c2c6ac: Additional JDBC Query tests.
+1770522161 - b468f87de80e139540f35f323adc3cc3bf8514f9: Updating statement query tests.
+1770522168 - acba937b99608585cd64649f5735fef903196eb0: Additional JDBC Query tests.
+1770522174 - a79108c55ab90282b1fc04ba39d04a92cec74739: Additional JDBC Query tests.
+1770522551 - 2fdc996b230cbe75f1b7ae17d9f6fe8da8a5be87: Document Synchronizer tests.
+- 1770522551 - c5a83d68454c32c6b5e127316535933b82f0efdc: Additional JDBC Query tests.
+
