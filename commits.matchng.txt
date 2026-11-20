@@ -502,20 +502,26 @@ Date:   Fri Jan 23 09:56:59 2026 -0800
 
     New Validator
 
+---
+
+ALL ON models
+
 missing: 5bb928bb11a927b495063e57b35c9df14cc2d3b1
 missing 2866a72a83837500d2f07e59c436946c3290300d
 
-MISSING commit 2866a72a83837500d2f07e59c436946c3290300d
+MATCHED commit 2866a72a83837500d2f07e59c436946c3290300d
 Author: John Grundback <jgrundback@gmail.com>
 Date:   Fri Jan 23 09:56:04 2026 -0800
 
     Add models
 
-MISSING commit a6a02eea5d514454fef5fc871b438ea20d2ecc7a
+MATCHED commit a6a02eea5d514454fef5fc871b438ea20d2ecc7a
 Author: John Grundback <jgrundback@gmail.com>
 Date:   Fri Jan 23 09:55:38 2026 -0800
 
     With
+
+---
 
 MATCHED commit 6122f97b40e7f723c21a97824743ca8af2d1b17e
 Author: John Grundback <jgrundback@gmail.com>
@@ -535,11 +541,17 @@ Date:   Fri Jan 23 07:37:11 2026 -0800
 
     Add models
 
-MISSING commit 5bb928bb11a927b495063e57b35c9df14cc2d3b1
+---
+
+ALL ON models
+
+MATCHED commit 5bb928bb11a927b495063e57b35c9df14cc2d3b1
 Author: John Grundback <jgrundback@gmail.com>
 Date:   Fri Jan 23 07:36:59 2026 -0800
 
     Add models
+
+---
 
 MATCHED commit 9dbff2136a93adeb873a80f7b67407ae450c4966
 Author: John Grundback <jgrundback@gmail.com>
