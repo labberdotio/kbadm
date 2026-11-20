@@ -183,6 +183,10 @@ Date:   Mon Mar 9 16:52:12 2026 -0700
     john@Johns-MacBook-Pro-13-M2.local ~/Documents/development/kbadm>ls -al kbadmlib/pom.xml__
     -rw-r--r--@ 1 john  staff  3723 jan. 20 08:02 kbadmlib/pom.xml__
 
+---
+
+after jan 31, feb 1st?
+
 commit f34624faae4a40bc9d5f8d7fc7ee739a64a7f1a1
 Author: John Grundback <jgrundback@gmail.com>
 Date:   Mon Mar 9 16:51:45 2026 -0700
@@ -195,6 +199,13 @@ Date:   Mon Mar 9 16:51:45 2026 -0700
     drwxr-xr-x@ 4 john  staff  128 feb.  7 13:48 ..
     -rw-r--r--@ 1 john  staff  129 feb.  7 11:46 application.properties
     -rw-r--r--@ 1 john  staff  970 feb.  7 12:29 config.json
+
+john@snickers /scratch/john/development/kbadm>ls -altT kbadmapp/src/test/resources/
+total 18
+drwxr-xr-x  2 john staff   4 feb.  7 13:48:54 2026 .
+drwxr-xr-x  4 john staff   4 feb.  7 13:48:45 2026 ..
+-rw-r--r--  1 john staff 970 feb.  7 12:29:05 2026 config.json
+-rw-r--r--  1 john staff 129 feb.  7 11:46:05 2026 application.properties
 
 commit 5081c0bb34901329c057b3f069e8bf3ab5058a5a
 Author: John Grundback <jgrundback@gmail.com>
@@ -213,6 +224,17 @@ Date:   Mon Mar 9 16:51:22 2026 -0700
     -rw-r--r--@ 1 john  staff   765 feb.  7 12:34 KnowledgebaseConfig.java
     -rw-r--r--@ 1 john  staff   755 feb.  7 12:34 VectorstoreConfig.java
 
+john@snickers /scratch/john/development/kbadm>ls -altT kbadmapp/src/test/java/io/labber/kbadm/config/
+total 68
+-rw-r--r--  1 john staff 1343 feb.  7 13:57:49 2026 Config.java
+-rw-r--r--  1 john staff 1968 feb.  7 13:54:59 2026 ConfigTest.java
+-rw-r--r--  1 john staff  755 feb.  7 12:34:07 2026 VectorstoreConfig.java
+-rw-r--r--  1 john staff  765 feb.  7 12:34:02 2026 KnowledgebaseConfig.java
+-rw-r--r--  1 john staff  704 feb.  7 12:31:00 2026 EndpointConfig.java
+-rw-r--r--  1 john staff  706 feb.  7 12:30:42 2026 DatasourceConfig.java
+drwxr-xr-x  2 john staff    8 feb.  7 12:21:13 2026 .
+drwxr-xr-x  3 john staff    3 feb.  7 12:13:15 2026 ..
+
 PICKED commit 62a0cc71ad95f8ff8a0a08ba1da698a5198a8603
 Author: John Grundback <jgrundback@gmail.com>
 Date:   Mon Mar 9 16:50:45 2026 -0700
@@ -223,6 +245,13 @@ Date:   Mon Mar 9 16:50:45 2026 -0700
     drwxr-xr-x@ 5 john  staff  160 feb.  7 11:45 ..
     -rw-r--r--@ 1 john  staff  129 feb.  7 11:46 application.properties
     -rw-r--r--@ 1 john  staff  970 feb.  7 12:29 config.json
+
+john@snickers /scratch/john/development/kbadm>ls -altT kbadmapp/src/main/resources/
+total 18
+-rw-r--r--  1 john staff 970 feb.  7 12:29:05 2026 config.json
+drwxr-xr-x  2 john staff   4 feb.  7 11:46:57 2026 .
+-rw-r--r--  1 john staff 129 feb.  7 11:46:05 2026 application.properties
+drwxr-xr-x  5 john staff   5 feb.  7 11:45:38 2026 ..
 
 commit 922f501184d780d4dbafca77bd95a3f5b81711aa
 Author: John Grundback <jgrundback@gmail.com>
@@ -237,6 +266,13 @@ Date:   Mon Mar 9 16:50:04 2026 -0700
     -rw-r--r--@ 1 john  staff  2435 feb.  7 11:44 ApplicationConfig.java
     -rw-r--r--@ 1 john  staff  1097 feb.  7 09:56 SecurityConfig.java
 
+john@snickers /scratch/john/development/kbadm>ls -altT kbadmapp/src/main/java/io/labber/kbadm/config          
+total 34
+drwxr-xr-x  3 john staff    8 mars 10 08:03:00 2026 ..
+-rw-r--r--  1 john staff 1167 mars  9 20:02:28 2026 SecurityConfig.java
+-rw-r--r--  1 john staff 3115 mars  9 20:01:17 2026 ApplicationConfig.java
+drwxr-xr-x  2 john staff    4 feb.  7 11:42:36 2026 .
+
 commit ddcb5ac45961589a2e9386a76e852a39203ffa8d
 Author: John Grundback <jgrundback@gmail.com>
 Date:   Mon Mar 9 16:49:42 2026 -0700
@@ -245,6 +281,9 @@ Date:   Mon Mar 9 16:49:42 2026 -0700
     
     john@Johns-MacBook-Pro-13-M2.local ~/Documents/development/kbadm>ls -al kbadmapp/src/main/java/io/labber/kbadm/Application.java
     -rw-r--r--@ 1 john  staff  1412 feb.  7 09:55 kbadmapp/src/main/java/io/labber/kbadm/Application.java
+
+john@snickers /scratch/john/development/kbadm>ls -altT kbadmapp/src/main/java/io/labber/kbadm/Application.java
+-rw-r--r--  1 john staff 1412 feb.  7 09:55:13 2026 kbadmapp/src/main/java/io/labber/kbadm/Application.java
 
 PICKED commit e62c1932c798383cb26384941be5c3b68725646f
 Author: John Grundback <jgrundback@gmail.com>
@@ -257,6 +296,11 @@ Date:   Mon Mar 9 16:48:24 2026 -0700
     john@Johns-MacBook-Pro-13-M2.local ~/Documents/development/kbadm>ls -al kbadmlib/src/main/java/io/labber/kbadm/model/Response.java
     -rw-r--r--@ 1 john  staff  162 jan. 19 11:51 kbadmlib/src/main/java/io/labber/kbadm/model/Response.java
 
+john@snickers /scratch/john/development/kbadm>ls -altT ./kbadmlib/src/main/java/io/labber/kbadm/model/Request.java
+-rw-r--r--  1 john staff 161 jan. 19 11:51:13 2026 ./kbadmlib/src/main/java/io/labber/kbadm/model/Request.java
+john@snickers /scratch/john/development/kbadm>ls -altT ./kbadmlib/src/main/java/io/labber/kbadm/model/Response.java 
+-rw-r--r--  1 john staff 162 jan. 19 11:51:16 2026 ./kbadmlib/src/main/java/io/labber/kbadm/model/Response.java
+
 commit bf9ddff2034599d7731761d8aa3329d030af3b27
 Author: John Grundback <jgrundback@gmail.com>
 Date:   Mon Mar 9 16:47:37 2026 -0700
@@ -267,6 +311,25 @@ Date:   Mon Mar 9 16:47:37 2026 -0700
     -rw-r--r--@ 1 john  staff  169 jan. 19 11:51 kbadmlib/src/main/java/io/labber/kbadm/store/IStoreAdmin.java
     john@Johns-MacBook-Pro-13-M2.local ~/Documents/development/kbadm>ls -a kbadmlib/src/main/java/io/labber/kbadm/store/StoreAdmin.java
     kbadmlib/src/main/java/io/labber/kbadm/store/StoreAdmin.java
+
+john@snickers /scratch/john/development/kbadm>ls -altT kbadmlib/src/main/java/io/labber/kbadm/store/IStoreAdmin.java
+-rw-r--r--  1 john staff 169 jan. 19 11:51:22 2026 kbadmlib/src/main/java/io/labber/kbadm/store/IStoreAdmin.java
+john@snickers /scratch/john/development/kbadm>ls -altT kbadmlib/src/main/java/io/labber/kbadm/store/StoreAdmin.java 
+-rw-r--r--  1 john staff 187 jan. 19 11:51:38 2026 kbadmlib/src/main/java/io/labber/kbadm/store/StoreAdmin.java
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 ---
 
@@ -356,14 +419,15 @@ Date:   Mon Mar 9 15:00:04 2026 -0700
 
 ---
 
+ALL ON driver
 
-??? commit d1c3f0dac4c8e1d79da169b1273eb5c5d31a0e6e
+MATCHED commit d1c3f0dac4c8e1d79da169b1273eb5c5d31a0e6e
 Author: John Grundback <jgrundback@gmail.com>
 Date:   Mon Mar 9 14:03:10 2026 -0700
 
     Neo4j driver
 
-??? commit 60165f552113a04dac50664b86d7190d47ee81a3
+MATCHED commit 60165f552113a04dac50664b86d7190d47ee81a3
 Author: John Grundback <jgrundback@gmail.com>
 Date:   Mon Mar 9 14:03:01 2026 -0700
 
