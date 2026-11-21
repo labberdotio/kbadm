@@ -7,17 +7,27 @@
 package io.labber.kbadm.impl.pgvector;
 
 import java.sql.Connection;
+import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.Collection;
+import java.util.Iterator;
 
 import org.springframework.ai.embedding.EmbeddingModel;
 import org.springframework.ai.vectorstore.VectorStore;
 import org.springframework.ai.vectorstore.pgvector.PgVectorStore;
 import org.springframework.jdbc.core.JdbcTemplate;
+import org.springframework.jdbc.core.PreparedStatementCreator;
 
 import io.labber.kbadm.KBException;
 import io.labber.kbadm.driver.Driver;
+import io.labber.kbadm.model.Chunk;
+import io.labber.kbadm.model.Document;
+import io.labber.kbadm.model.DocumentChunk;
+import io.labber.kbadm.model.rowmapper.ChunkRowMapper;
+import io.labber.kbadm.model.rowmapper.DocumentRowMapper;
+import io.labber.kbadm.model.rowmapper.DocumentChunkRowMapper;
 
 /**
  * 
@@ -219,6 +229,172 @@ public class PgVectorStoreDriverImpl extends Driver {
 			}
 		}
 
+	}
+
+	/**
+	 * 
+	 * @param statment
+	 * @return
+	 * @throws SQLException
+	 */
+	protected Collection<Document> runDocumentStatement(String statment) throws SQLException {
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		Collection<Document> list = null;
+		try {
+
+			JdbcTemplate tmpl = this.jdbcTemplate;
+			PreparedStatementCreator psc = new PreparedStatementCreator() {
+				@Override
+				public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+					PreparedStatement ps = con.prepareCall(statment);
+					return ps;
+				}
+			};
+
+			list = tmpl.query(psc, new DocumentRowMapper());
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if( rs != null ) {
+				try { rs.close(); } catch (SQLException e) { /* log error */ }
+			}
+			if( stmt != null ) {
+				try { stmt.close(); } catch (SQLException e) { /* log error */ }
+			}
+			if( conn != null ) {
+				try { conn.close(); } catch (SQLException e) { /* log error */ }
+			}
+		}
+
+		return list;
+	}
+
+	/**
+	 * 
+	 * @param statment
+	 * @return
+	 * @throws SQLException
+	 */
+	protected Collection<Chunk> runChunkStatement(String statment) throws SQLException {
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		Collection<Chunk> list = null;
+		try {
+
+			JdbcTemplate tmpl = this.jdbcTemplate;
+			PreparedStatementCreator psc = new PreparedStatementCreator() {
+				@Override
+				public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+					PreparedStatement ps = con.prepareCall(statment);
+					return ps;
+				}
+			};
+
+			list = tmpl.query(psc, new ChunkRowMapper());
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if( rs != null ) {
+				try { rs.close(); } catch (SQLException e) { /* log error */ }
+			}
+			if( stmt != null ) {
+				try { stmt.close(); } catch (SQLException e) { /* log error */ }
+			}
+			if( conn != null ) {
+				try { conn.close(); } catch (SQLException e) { /* log error */ }
+			}
+		}
+
+		return list;
+	}
+
+	/**
+	 * 
+	 * @param statment
+	 * @return
+	 * @throws SQLException
+	 */
+	protected Collection<DocumentChunk> runDocumentChunkStatement(String statment) throws SQLException {
+
+		Connection conn = null;
+		PreparedStatement stmt = null;
+		ResultSet rs = null;
+		Collection<DocumentChunk> list = null;
+		try {
+
+			JdbcTemplate tmpl = this.jdbcTemplate;
+			PreparedStatementCreator psc = new PreparedStatementCreator() {
+				@Override
+				public PreparedStatement createPreparedStatement(Connection con) throws SQLException {
+					PreparedStatement ps = con.prepareCall(statment);
+					return ps;
+				}
+			};
+
+			list = tmpl.query(psc, new DocumentChunkRowMapper());
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			if( rs != null ) {
+				try { rs.close(); } catch (SQLException e) { /* log error */ }
+			}
+			if( stmt != null ) {
+				try { stmt.close(); } catch (SQLException e) { /* log error */ }
+			}
+			if( conn != null ) {
+				try { conn.close(); } catch (SQLException e) { /* log error */ }
+			}
+		}
+
+		return list;
+	}
+
+	/**
+	 * 
+	 * @param document
+	 * @return
+	 * @throws SQLException
+	 */
+	protected Collection<Document> getDocuments(String document) throws SQLException {
+		return this.runDocumentStatement("SELECT * FROM document_store WHERE name = '" + document.replace("'", "''") + "';");
+	}
+
+	/**
+	 * 
+	 * @param document
+	 * @return
+	 * @throws SQLException
+	 */
+	protected Collection<Chunk> getChunks(String document) throws SQLException {
+		return this.runChunkStatement("SELECT * FROM vector_store WHERE metadata->>'source' = '" + document.replace("'", "''") + "';");
+	}
+
+	/**
+	 * 
+	 * @param document
+	 * @return
+	 * @throws SQLException
+	 */
+	protected Collection<Chunk> getChunks(Document document) throws SQLException {
+		return this.runChunkStatement("SELECT * FROM vector_store WHERE metadata->>'parent_document_id' = '" + document.getId().replace("'", "''") + "';");
+	}
+
+	/**
+	 * 
+	 * @param document
+	 * @return
+	 * @throws SQLException
+	 */
+	protected Collection<DocumentChunk> getDocumentChunks(Document document) throws SQLException {
+		return this.runDocumentChunkStatement("SELECT * FROM document_chunk WHERE document_id = '" + document.getId().replace("'", "''") + "';");
 	}
 
 	/**
