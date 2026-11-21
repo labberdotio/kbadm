@@ -84,4 +84,44 @@ public class Chunk {
 		this.content = content;
 	}
 
+	/**
+	 * 
+	 * @param id
+	 * @return
+	 */
+	public Chunk withId(String id) {
+		this.id = id;
+		return this;
+	}
+
+	/**
+	 * 
+	 * @param metadata
+	 * @return
+	 */
+	public Chunk withMetadata(String metadata) {
+		this.metadata = metadata;
+		return this;
+	}
+
+	/**
+	 * 
+	 * @param embedding
+	 * @return
+	 */
+	public Chunk withEmbedding(String embedding) {
+		this.embedding = embedding;
+		return this;
+	}
+
+	/**
+	 * 
+	 * @param content
+	 * @return
+	 */
+	public Chunk withContent(String content) {
+		this.content = content;
+		return this;
+	}
+
 }
